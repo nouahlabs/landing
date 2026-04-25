@@ -14,7 +14,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
       <Container>
         <StaggerChildren
           staggerDelay={0.1}
-          className="grid grid-cols-1 gap-10 md:grid-cols-2"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2"
         >
           {projects.map((project) => (
             <StaggerItem key={project.slug}>

@@ -32,7 +32,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 bg-black/40"
+            className="fixed inset-0 z-50 bg-dark/50"
             onClick={onClose}
           />
           <motion.div
@@ -40,13 +40,13 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed top-0 right-0 bottom-0 z-50 w-80 bg-white p-8"
+            className="fixed bottom-0 right-0 top-0 z-50 w-80 border-l border-border bg-white p-8"
           >
             <div className="flex items-center justify-between">
               <Logo />
               <button
                 onClick={onClose}
-                className="text-2xl leading-none text-text-secondary hover:text-text"
+                className="rounded-md border border-border px-2 py-1 text-xl leading-none text-text-secondary hover:text-text"
                 aria-label="Close menu"
               >
                 &times;
@@ -59,7 +59,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                   key={item.href}
                   href={item.href}
                   onClick={onClose}
-                  className="text-lg font-medium text-text transition-colors hover:text-accent"
+                  className="font-display text-lg font-medium text-text transition-colors hover:text-accent"
                 >
                   {item.label}
                 </Link>
@@ -69,7 +69,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             <Link
               href="/contact"
               onClick={onClose}
-              className="mt-10 block rounded-full bg-dark px-6 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-dark/90"
+              className="mt-10 block rounded-md bg-accent px-6 py-3 text-center font-display text-sm font-semibold text-white transition-colors hover:bg-dark"
             >
               Start a Project
             </Link>

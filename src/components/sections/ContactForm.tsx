@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/Button";
 
 const projectTypes = [
@@ -20,36 +20,75 @@ const budgetRanges = [
   "Not sure yet",
 ];
 
-export function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+type SubmitState = "idle" | "submitting" | "success" | "error";
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSubmitted(true);
+function getFormspreeEndpoint() {
+  const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+  const formId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID;
+
+  if (endpoint) {
+    return endpoint;
   }
 
-  if (submitted) {
-    return (
-      <div className="rounded-2xl border border-border bg-surface p-12 text-center">
-        <h3 className="text-xl font-semibold font-[family-name:var(--font-plus-jakarta)]">
-          Thank you!
-        </h3>
-        <p className="mt-3 text-text-secondary">
-          We&apos;ve received your message and will get back to you within 24
-          hours.
-        </p>
-      </div>
-    );
+  if (formId) {
+    return `https://formspree.io/f/${formId}`;
+  }
+
+  return "";
+}
+
+export function ContactForm() {
+  const [state, setState] = useState<SubmitState>("idle");
+  const [message, setMessage] = useState("");
+  const endpoint = useMemo(() => getFormspreeEndpoint(), []);
+  const disabled = state === "submitting";
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    if (!endpoint) {
+      setState("error");
+      setMessage(
+        "Formspree is not configured yet. Add NEXT_PUBLIC_FORMSPREE_FORM_ID or NEXT_PUBLIC_FORMSPREE_ENDPOINT."
+      );
+      return;
+    }
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    setState("submitting");
+    setMessage("");
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Formspree rejected the submission.");
+      }
+
+      form.reset();
+      setState("success");
+      setMessage("Thanks. Your message was sent and we will reply soon.");
+    } catch {
+      setState("error");
+      setMessage(
+        "The message could not be sent. Please email hello@nouahlabs.com directly."
+      );
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <input type="hidden" name="_subject" value="New Nouah Labs project lead" />
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-text"
-          >
+          <label htmlFor="name" className="block text-sm font-medium text-text">
             Name <span className="text-accent">*</span>
           </label>
           <input
@@ -57,15 +96,13 @@ export function ContactForm() {
             name="name"
             type="text"
             required
-            className="mt-2 block w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-accent"
+            disabled={disabled}
+            className="mt-2 block w-full rounded-md border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-accent disabled:cursor-not-allowed disabled:bg-surface"
             placeholder="Your name"
           />
         </div>
         <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-text"
-          >
+          <label htmlFor="email" className="block text-sm font-medium text-text">
             Email <span className="text-accent">*</span>
           </label>
           <input
@@ -73,29 +110,28 @@ export function ContactForm() {
             name="email"
             type="email"
             required
-            className="mt-2 block w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-accent"
+            disabled={disabled}
+            className="mt-2 block w-full rounded-md border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-accent disabled:cursor-not-allowed disabled:bg-surface"
             placeholder="you@company.com"
           />
         </div>
       </div>
 
       <div>
-        <label
-          htmlFor="company"
-          className="block text-sm font-medium text-text"
-        >
+        <label htmlFor="company" className="block text-sm font-medium text-text">
           Company
         </label>
         <input
           id="company"
           name="company"
           type="text"
-          className="mt-2 block w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-accent"
+          disabled={disabled}
+          className="mt-2 block w-full rounded-md border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-accent disabled:cursor-not-allowed disabled:bg-surface"
           placeholder="Your company name"
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label
             htmlFor="projectType"
@@ -107,7 +143,8 @@ export function ContactForm() {
             id="projectType"
             name="projectType"
             required
-            className="mt-2 block w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors focus:border-accent"
+            disabled={disabled}
+            className="mt-2 block w-full rounded-md border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors focus:border-accent disabled:cursor-not-allowed disabled:bg-surface"
           >
             <option value="">Select a type</option>
             {projectTypes.map((type) => (
@@ -118,16 +155,14 @@ export function ContactForm() {
           </select>
         </div>
         <div>
-          <label
-            htmlFor="budget"
-            className="block text-sm font-medium text-text"
-          >
+          <label htmlFor="budget" className="block text-sm font-medium text-text">
             Budget Range
           </label>
           <select
             id="budget"
             name="budget"
-            className="mt-2 block w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors focus:border-accent"
+            disabled={disabled}
+            className="mt-2 block w-full rounded-md border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors focus:border-accent disabled:cursor-not-allowed disabled:bg-surface"
           >
             <option value="">Select a range</option>
             {budgetRanges.map((range) => (
@@ -140,10 +175,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label
-          htmlFor="message"
-          className="block text-sm font-medium text-text"
-        >
+        <label htmlFor="message" className="block text-sm font-medium text-text">
           Project Description <span className="text-accent">*</span>
         </label>
         <textarea
@@ -151,13 +183,27 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
-          className="mt-2 block w-full resize-none rounded-xl border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-accent"
-          placeholder="Tell us about your project — what are you building, who is it for, and what are your goals?"
+          disabled={disabled}
+          className="mt-2 block w-full resize-none rounded-md border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-accent disabled:cursor-not-allowed disabled:bg-surface"
+          placeholder="Tell us what you are building, who it is for, and what you want to launch."
         />
       </div>
 
+      {message && (
+        <p
+          className={
+            state === "success"
+              ? "rounded-md bg-accent-soft px-4 py-3 text-sm text-accent"
+              : "rounded-md bg-red-50 px-4 py-3 text-sm text-red-700"
+          }
+          role="status"
+        >
+          {message}
+        </p>
+      )}
+
       <Button type="submit" className="w-full justify-center sm:w-auto">
-        Send Message
+        {state === "submitting" ? "Sending..." : "Send Message"}
       </Button>
     </form>
   );

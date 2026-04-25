@@ -10,10 +10,10 @@ export function Heading({ level = "h2", children, className }: HeadingProps) {
   const Tag = level;
 
   const styles = {
-    h1: "text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl font-[family-name:var(--font-plus-jakarta)]",
-    h2: "text-3xl font-bold tracking-tight md:text-4xl font-[family-name:var(--font-plus-jakarta)]",
-    h3: "text-xl font-semibold tracking-tight md:text-2xl font-[family-name:var(--font-plus-jakarta)]",
-    h4: "text-lg font-semibold tracking-tight font-[family-name:var(--font-plus-jakarta)]",
+    h1: "font-display text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl",
+    h2: "font-display text-3xl font-semibold tracking-tight md:text-4xl",
+    h3: "font-display text-xl font-semibold tracking-tight md:text-2xl",
+    h4: "font-display text-lg font-semibold tracking-tight",
   };
 
   return <Tag className={cn(styles[level], className)}>{children}</Tag>;

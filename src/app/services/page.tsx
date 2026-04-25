@@ -4,7 +4,7 @@ import { Section } from "@/components/ui/Section";
 import { Heading } from "@/components/ui/Heading";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { services } from "@/data/services";
+import { getServices } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -12,21 +12,23 @@ export const metadata: Metadata = {
     "End-to-end digital product development services — from mobile apps and websites to MVPs and product design.",
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const services = await getServices();
+
   return (
     <>
       <Section className="pt-36">
         <Container>
           <FadeIn>
-            <span className="text-sm font-medium uppercase tracking-wider text-accent">
+            <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
               Services
             </span>
             <Heading level="h1" className="mt-3">
-              What we can build for you
+              Practical product services for apps, websites, and launches.
             </Heading>
             <p className="mt-4 max-w-2xl text-lg text-text-secondary">
-              We offer a complete range of digital product services, from
-              initial concept through design, development, and launch.
+              We shape the product, design the interface, build the system, and
+              prepare it for the realities of launch and iteration.
             </p>
           </FadeIn>
         </Container>
@@ -41,7 +43,7 @@ export default function ServicesPage() {
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
               <FadeIn>
                 <div>
-                  <span className="text-sm font-medium uppercase tracking-wider text-accent">
+                  <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <Heading level="h2" className="mt-2">
@@ -55,7 +57,7 @@ export default function ServicesPage() {
 
               <FadeIn delay={0.15}>
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-text-tertiary">
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-text-tertiary">
                     What&apos;s included
                   </h3>
                   <ul className="mt-4 space-y-3">
@@ -79,21 +81,16 @@ export default function ServicesPage() {
       <Section>
         <Container>
           <FadeIn>
-            <div className="mx-auto max-w-3xl rounded-3xl bg-dark px-8 py-16 text-center lg:px-16">
-              <Heading level="h2" className="text-white">
+            <div className="border-y border-border py-14 text-center">
+              <Heading level="h2">
                 Ready to get started?
               </Heading>
-              <p className="mx-auto mt-4 max-w-xl text-neutral-400">
+              <p className="mx-auto mt-4 max-w-xl text-text-secondary">
                 Tell us about your project and we&apos;ll get back to you within
                 24 hours with a plan.
               </p>
               <div className="mt-8">
-                <Button
-                  href="/contact"
-                  className="bg-accent text-white hover:bg-accent-light"
-                >
-                  Start a Project
-                </Button>
+                <Button href="/contact">Start a Project</Button>
               </div>
             </div>
           </FadeIn>

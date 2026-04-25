@@ -13,12 +13,10 @@ interface ButtonProps {
 }
 
 const variants: Record<ButtonVariant, string> = {
-  primary:
-    "bg-dark text-white hover:bg-dark/90",
+  primary: "bg-accent text-white shadow-sm hover:bg-dark",
   secondary:
-    "border border-border text-dark hover:bg-dark hover:text-white",
-  ghost:
-    "text-dark hover:bg-surface",
+    "border border-border bg-white text-dark hover:border-accent hover:text-accent",
+  ghost: "text-dark hover:bg-surface hover:text-accent",
 };
 
 export function Button({
@@ -30,12 +28,22 @@ export function Button({
   onClick,
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 font-[family-name:var(--font-plus-jakarta)]",
+    "inline-flex items-center justify-center rounded-md px-5 py-3 font-display text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/30",
     variants[variant],
     className
   );
 
   if (href) {
+    const external = href.startsWith("http");
+
+    if (external) {
+      return (
+        <a href={href} className={classes}>
+          {children}
+        </a>
+      );
+    }
+
     return (
       <Link href={href} className={classes}>
         {children}

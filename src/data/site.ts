@@ -2,9 +2,9 @@ import { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
   name: "Nouah Labs",
-  tagline: "We build digital products that matter.",
+  tagline: "Mobile apps and websites with product discipline.",
   description:
-    "A modern digital product studio that builds mobile apps and websites for startups, businesses, and founders.",
+    "Nouah Labs is a focused app development studio for founders and teams that need thoughtful mobile apps, web products, and launch-ready digital systems.",
   url: "https://nouahlabs.com",
   email: "hello@nouahlabs.com",
   social: {

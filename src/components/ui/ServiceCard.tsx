@@ -27,11 +27,11 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export function ServiceCard({ service }: ServiceCardProps) {
   return (
-    <div className="group rounded-2xl border border-border bg-white p-8 transition-all duration-300 hover:border-dark/20 hover:shadow-lg">
-      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface text-text-secondary transition-colors group-hover:bg-dark group-hover:text-white">
+    <div className="group h-full rounded-lg border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10">
+      <div className="flex h-11 w-11 items-center justify-center rounded-md bg-surface text-accent transition-colors group-hover:bg-accent group-hover:text-white">
         {iconMap[service.icon] ?? iconMap.layout}
       </div>
-      <h3 className="mt-6 text-lg font-semibold font-[family-name:var(--font-plus-jakarta)] text-text">
+      <h3 className="mt-6 font-display text-lg font-semibold text-text">
         {service.title}
       </h3>
       <p className="mt-2 text-sm leading-relaxed text-text-secondary">

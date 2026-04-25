@@ -18,15 +18,15 @@ export default function ContactPage() {
         <Container>
           <div className="mx-auto max-w-3xl">
             <FadeIn>
-              <span className="text-sm font-medium uppercase tracking-wider text-accent">
+              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
                 Get in Touch
               </span>
               <Heading level="h1" className="mt-3">
-                Let&apos;s build something together
+                Tell us what you are building.
               </Heading>
               <p className="mt-4 text-lg text-text-secondary">
-                Have a project in mind? Fill out the form below and
-                we&apos;ll get back to you within 24 hours.
+                Share the product, timeline, and rough scope. The form goes
+                through Formspree once your endpoint is configured.
               </p>
             </FadeIn>
           </div>
@@ -46,7 +46,7 @@ export default function ContactPage() {
               <FadeIn delay={0.2}>
                 <div className="space-y-8">
                   <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-text-tertiary">
+                    <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-text-tertiary">
                       Email
                     </h3>
                     <a
@@ -58,7 +58,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-text-tertiary">
+                    <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-text-tertiary">
                       Social
                     </h3>
                     <div className="mt-2 flex flex-col gap-2">
@@ -82,7 +82,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-text-tertiary">
+                    <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-text-tertiary">
                       Response Time
                     </h3>
                     <p className="mt-2 text-text-secondary">

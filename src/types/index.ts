@@ -3,26 +3,15 @@ export interface Project {
   title: string;
   subtitle: string;
   description: string;
-  longDescription: string;
-  client: string;
   category: string;
   year: string;
-  thumbnail: string;
-  images: string[];
+  externalUrl?: string;
+  thumbnail?: string;
+  platform?: string;
+  status?: string;
   technologies: string[];
-  features: string[];
-  problem: string;
-  solution: string;
-  outcome: string;
-  liveUrl?: string;
-  appStoreUrl?: string;
-  playStoreUrl?: string;
   featured: boolean;
-  testimonial?: {
-    quote: string;
-    author: string;
-    role: string;
-  };
+  sortOrder?: number;
 }
 
 export interface Service {

@@ -42,25 +42,24 @@ export default function AboutPage() {
         <Container>
           <div className="mx-auto max-w-3xl">
             <FadeIn>
-              <span className="text-sm font-medium uppercase tracking-wider text-accent">
+              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
                 About Us
               </span>
               <Heading level="h1" className="mt-3">
-                We build digital products that people actually want to use.
+                A small studio for focused product work.
               </Heading>
             </FadeIn>
 
             <FadeIn delay={0.2}>
               <p className="mt-6 text-lg leading-relaxed text-text-secondary">
-                Nouah Labs is a digital product studio that works with startups,
-                businesses, and founders to design and build mobile apps,
-                websites, and web applications. We focus on creating products
-                that are well-designed, thoughtfully built, and genuinely useful.
+                Nouah Labs works with founders, startups, and operating teams to
+                design and build mobile apps, websites, and web applications
+                that can move from idea to production without losing clarity.
               </p>
               <p className="mt-4 text-lg leading-relaxed text-text-secondary">
-                We believe the best digital products come from a combination of
-                strong design, solid engineering, and clear product thinking.
-                That&apos;s what we bring to every project.
+                The studio is intentionally lean: product thinking, interface
+                design, engineering, content workflow, and launch readiness stay
+                connected instead of being treated as separate phases.
               </p>
             </FadeIn>
           </div>
@@ -71,7 +70,7 @@ export default function AboutPage() {
         <Container>
           <FadeIn>
             <div className="mx-auto max-w-2xl text-center">
-              <span className="text-sm font-medium uppercase tracking-wider text-accent">
+              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
                 Our Philosophy
               </span>
               <Heading level="h2" className="mt-3">
@@ -86,8 +85,8 @@ export default function AboutPage() {
           >
             {values.map((value) => (
               <StaggerItem key={value.title}>
-                <div className="rounded-2xl border border-border bg-white p-8">
-                  <h3 className="text-lg font-semibold font-[family-name:var(--font-plus-jakarta)]">
+                <div className="h-full rounded-lg border border-border bg-white p-6">
+                  <h3 className="font-display text-lg font-semibold">
                     {value.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-text-secondary">
@@ -105,7 +104,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20">
             <FadeIn>
               <div>
-                <span className="text-sm font-medium uppercase tracking-wider text-accent">
+                <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
                   Who We Work With
                 </span>
                 <Heading level="h2" className="mt-3">
@@ -125,8 +124,8 @@ export default function AboutPage() {
 
             <FadeIn delay={0.15}>
               <div className="space-y-6">
-                <div className="rounded-2xl bg-surface p-6">
-                  <h3 className="font-semibold font-[family-name:var(--font-plus-jakarta)]">
+                <div className="rounded-lg border border-border bg-surface p-6">
+                  <h3 className="font-display font-semibold">
                     Startups & Founders
                   </h3>
                   <p className="mt-1 text-sm text-text-secondary">
@@ -134,8 +133,8 @@ export default function AboutPage() {
                     product-market fit.
                   </p>
                 </div>
-                <div className="rounded-2xl bg-surface p-6">
-                  <h3 className="font-semibold font-[family-name:var(--font-plus-jakarta)]">
+                <div className="rounded-lg border border-border bg-surface p-6">
+                  <h3 className="font-display font-semibold">
                     Small & Medium Businesses
                   </h3>
                   <p className="mt-1 text-sm text-text-secondary">
@@ -143,8 +142,8 @@ export default function AboutPage() {
                     operate better.
                   </p>
                 </div>
-                <div className="rounded-2xl bg-surface p-6">
-                  <h3 className="font-semibold font-[family-name:var(--font-plus-jakarta)]">
+                <div className="rounded-lg border border-border bg-surface p-6">
+                  <h3 className="font-display font-semibold">
                     Product Teams
                   </h3>
                   <p className="mt-1 text-sm text-text-secondary">

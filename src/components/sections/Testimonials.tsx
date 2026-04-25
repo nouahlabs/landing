@@ -3,42 +3,48 @@ import { Section } from "@/components/ui/Section";
 import { Heading } from "@/components/ui/Heading";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildren";
-import { testimonials } from "@/data/testimonials";
+import { getTestimonials } from "@/sanity/lib/queries";
 
-export function Testimonials() {
+export async function Testimonials() {
+  const testimonials = await getTestimonials();
+
+  if (testimonials.length === 0) {
+    return null;
+  }
+
   return (
     <Section className="bg-surface">
       <Container>
         <FadeIn>
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="text-sm font-medium uppercase tracking-wider text-accent">
+          <div className="max-w-2xl">
+            <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
               Testimonials
             </span>
             <Heading level="h2" className="mt-3">
-              What our clients say
+              Clear collaboration, useful products.
             </Heading>
           </div>
         </FadeIn>
 
         <StaggerChildren
-          staggerDelay={0.15}
-          className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-3"
+          staggerDelay={0.1}
+          className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3"
         >
-          {testimonials.map((t) => (
-            <StaggerItem key={t.id}>
-              <div className="rounded-2xl border border-border bg-white p-8">
-                <p className="text-sm leading-relaxed text-text-secondary">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="mt-6">
+          {testimonials.map((testimonial) => (
+            <StaggerItem key={testimonial.id}>
+              <figure className="h-full rounded-lg border border-border bg-white p-6">
+                <blockquote className="text-sm leading-relaxed text-text-secondary">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </blockquote>
+                <figcaption className="mt-6">
                   <p className="text-sm font-semibold text-text">
-                    {t.author}
+                    {testimonial.author}
                   </p>
                   <p className="text-xs text-text-tertiary">
-                    {t.role}, {t.company}
+                    {testimonial.role}, {testimonial.company}
                   </p>
-                </div>
-              </div>
+                </figcaption>
+              </figure>
             </StaggerItem>
           ))}
         </StaggerChildren>
