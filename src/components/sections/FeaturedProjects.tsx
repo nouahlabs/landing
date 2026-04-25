@@ -6,9 +6,16 @@ import { ProjectCard } from "@/components/ui/ProjectCard";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildren";
 import { getFeaturedProjects } from "@/sanity/lib/queries";
+import { localizedPath, type Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-export async function FeaturedProjects() {
-  const featured = await getFeaturedProjects();
+interface FeaturedProjectsProps {
+  locale: Locale;
+  t: Dictionary;
+}
+
+export async function FeaturedProjects({ locale, t }: FeaturedProjectsProps) {
+  const featured = await getFeaturedProjects(locale);
 
   return (
     <Section className="bg-surface">
@@ -16,15 +23,19 @@ export async function FeaturedProjects() {
         <FadeIn>
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
-              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
-                Selected Work
+              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
+                {t.featured.eyebrow}
               </span>
               <Heading level="h2" className="mt-3 max-w-2xl">
-                Real products under the Nouah Labs umbrella.
+                {t.featured.title}
               </Heading>
             </div>
-            <Button variant="secondary" href="/work" className="w-fit">
-              View all work
+            <Button
+              variant="secondary"
+              href={localizedPath("/work", locale)}
+              className="w-fit"
+            >
+              {t.featured.viewAll}
             </Button>
           </div>
         </FadeIn>
@@ -35,7 +46,11 @@ export async function FeaturedProjects() {
         >
           {featured.map((project) => (
             <StaggerItem key={project.slug}>
-              <ProjectCard project={project} />
+              <ProjectCard
+                project={project}
+                locale={locale}
+                label={t.workPage.productLaunch}
+              />
             </StaggerItem>
           ))}
         </StaggerChildren>

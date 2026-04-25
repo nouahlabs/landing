@@ -1,12 +1,13 @@
 import type { ProcessStep, Project, Service, SiteConfig, Testimonial } from "@/types";
-import { processSteps as fallbackProcessSteps } from "@/data/process";
+import { defaultLocale, type Locale } from "@/i18n/config";
 import {
-  getProjectBySlug as getFallbackProjectBySlug,
-  projects as fallbackProjects,
-} from "@/data/projects";
-import { services as fallbackServices } from "@/data/services";
-import { siteConfig as fallbackSiteConfig } from "@/data/site";
-import { testimonials as fallbackTestimonials } from "@/data/testimonials";
+  getLocalProcessSteps,
+  getLocalProjectBySlug,
+  getLocalProjects,
+  getLocalServices,
+  getLocalSiteConfig,
+  getLocalTestimonials,
+} from "@/i18n/content";
 import { isSanityConfigured, sanityClient } from "./client";
 
 const revalidate = 120;
@@ -27,7 +28,15 @@ async function fetchSanity<T>(query: string, fallback: T): Promise<T> {
   }
 }
 
-export async function getSiteSettings(): Promise<SiteConfig> {
+export async function getSiteSettings(
+  locale: Locale = defaultLocale
+): Promise<SiteConfig> {
+  const fallbackSiteConfig = getLocalSiteConfig(locale);
+
+  if (locale !== defaultLocale) {
+    return fallbackSiteConfig;
+  }
+
   const settings = await fetchSanity<SiteConfig>(
     `*[_type == "siteSettings"][0]{
       name,
@@ -52,7 +61,15 @@ export async function getSiteSettings(): Promise<SiteConfig> {
   };
 }
 
-export async function getProjects(): Promise<Project[]> {
+export async function getProjects(
+  locale: Locale = defaultLocale
+): Promise<Project[]> {
+  const fallbackProjects = getLocalProjects(locale);
+
+  if (locale !== defaultLocale) {
+    return fallbackProjects;
+  }
+
   return fetchSanity<Project[]>(
     `*[_type == "project"] | order(sortOrder asc, year desc, title asc) {
       "slug": slug.current,
@@ -73,20 +90,33 @@ export async function getProjects(): Promise<Project[]> {
   );
 }
 
-export async function getFeaturedProjects(): Promise<Project[]> {
-  const projects = await getProjects();
+export async function getFeaturedProjects(
+  locale: Locale = defaultLocale
+): Promise<Project[]> {
+  const projects = await getProjects(locale);
   return projects.filter((project) => project.featured);
 }
 
-export async function getProjectBySlug(slug: string): Promise<Project | undefined> {
-  const projects = await getProjects();
+export async function getProjectBySlug(
+  slug: string,
+  locale: Locale = defaultLocale
+): Promise<Project | undefined> {
+  const projects = await getProjects(locale);
   return (
     projects.find((project) => project.slug === slug) ??
-    getFallbackProjectBySlug(slug)
+    getLocalProjectBySlug(slug, locale)
   );
 }
 
-export async function getServices(): Promise<Service[]> {
+export async function getServices(
+  locale: Locale = defaultLocale
+): Promise<Service[]> {
+  const fallbackServices = getLocalServices(locale);
+
+  if (locale !== defaultLocale) {
+    return fallbackServices;
+  }
+
   return fetchSanity<Service[]>(
     `*[_type == "service"] | order(sortOrder asc, title asc) {
       id,
@@ -100,7 +130,15 @@ export async function getServices(): Promise<Service[]> {
   );
 }
 
-export async function getTestimonials(): Promise<Testimonial[]> {
+export async function getTestimonials(
+  locale: Locale = defaultLocale
+): Promise<Testimonial[]> {
+  const fallbackTestimonials = getLocalTestimonials(locale);
+
+  if (locale !== defaultLocale) {
+    return fallbackTestimonials;
+  }
+
   return fetchSanity<Testimonial[]>(
     `*[_type == "testimonial"] | order(sortOrder asc, author asc) {
       id,
@@ -113,7 +151,15 @@ export async function getTestimonials(): Promise<Testimonial[]> {
   );
 }
 
-export async function getProcessSteps(): Promise<ProcessStep[]> {
+export async function getProcessSteps(
+  locale: Locale = defaultLocale
+): Promise<ProcessStep[]> {
+  const fallbackProcessSteps = getLocalProcessSteps(locale);
+
+  if (locale !== defaultLocale) {
+    return fallbackProcessSteps;
+  }
+
   return fetchSanity<ProcessStep[]>(
     `*[_type == "processStep"] | order(step asc) {
       step,

@@ -4,9 +4,16 @@ import { Heading } from "@/components/ui/Heading";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildren";
 import { getTestimonials } from "@/sanity/lib/queries";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-export async function Testimonials() {
-  const testimonials = await getTestimonials();
+interface TestimonialsProps {
+  locale: Locale;
+  t: Dictionary;
+}
+
+export async function Testimonials({ locale, t }: TestimonialsProps) {
+  const testimonials = await getTestimonials(locale);
 
   if (testimonials.length === 0) {
     return null;
@@ -17,11 +24,11 @@ export async function Testimonials() {
       <Container>
         <FadeIn>
           <div className="max-w-2xl">
-            <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
-              Testimonials
+            <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
+              {t.testimonials.eyebrow}
             </span>
             <Heading level="h2" className="mt-3">
-              Clear collaboration, useful products.
+              {t.testimonials.title}
             </Heading>
           </div>
         </FadeIn>
@@ -32,7 +39,7 @@ export async function Testimonials() {
         >
           {testimonials.map((testimonial) => (
             <StaggerItem key={testimonial.id}>
-              <figure className="h-full rounded-lg border border-border bg-white p-6">
+              <figure className="h-full rounded-3xl border border-border bg-white p-6">
                 <blockquote className="text-sm leading-relaxed text-text-secondary">
                   &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>

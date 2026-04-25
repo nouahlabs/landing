@@ -1,18 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #fbfdfc;
-  --color-surface: #eef7f4;
-  --color-surface-strong: #d8eee8;
-  --color-dark: #071513;
-  --color-dark-surface: #0c211e;
-  --color-text: #10201d;
-  --color-text-secondary: #536763;
-  --color-text-tertiary: #8aa09a;
-  --color-accent: #0f766e;
-  --color-accent-light: #14b8a6;
-  --color-accent-soft: #ccfbf1;
-  --color-border: #d9e7e2;
+  --color-sky-aqua: #56cbf9;
+  --color-maya-blue: #7fbeeb;
+  --color-powder-blue: #afbed1;
+  --color-pastel-petal: #eac5d8;
+  --color-lavender: #dbd8f0;
+  --color-background: #fbfdff;
+  --color-surface: #dbd8f0;
+  --color-surface-strong: #afbed1;
+  --color-dark: #10131a;
+  --color-dark-surface: #181c25;
+  --color-text: #151923;
+  --color-text-secondary: #596575;
+  --color-text-tertiary: #8490a0;
+  --color-accent: #56cbf9;
+  --color-accent-foreground: #176883;
+  --color-accent-light: #7fbeeb;
+  --color-accent-soft: #eac5d8;
+  --color-border: #afbed1;
 
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
@@ -34,9 +40,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-background: #10131a;
+  --color-surface: #181c25;
+  --color-surface-strong: #252b38;
+  --color-dark: #070b12;
+  --color-dark-surface: #121720;
+  --color-text: #f7fbff;
+  --color-text-secondary: #c6d0df;
+  --color-text-tertiary: #94a3b8;
+  --color-accent: #56cbf9;
+  --color-accent-foreground: #7fbeeb;
+  --color-accent-light: #56cbf9;
+  --color-accent-soft: #302634;
+  --color-border: #343d51;
+}
+
+:root[data-theme="dark"] .bg-white {
+  background-color: var(--color-dark-surface);
+}
+
+:root[data-theme="dark"] .bg-lavender,
+:root[data-theme="dark"] .bg-lavender\/70,
+:root[data-theme="dark"] .hover\:bg-lavender\/45:hover {
+  background-color: var(--color-surface-strong);
+}
+
 ::selection {
-  background-color: #0f766e;
-  color: white;
+  background-color: #56cbf9;
+  color: #10131a;
 }
 
 body:has([data-studio-route="true"]) header,

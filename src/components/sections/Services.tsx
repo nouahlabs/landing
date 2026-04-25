@@ -6,9 +6,16 @@ import { ServiceCard } from "@/components/ui/ServiceCard";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildren";
 import { getServices } from "@/sanity/lib/queries";
+import { localizedPath, type Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-export async function Services() {
-  const services = await getServices();
+interface ServicesProps {
+  locale: Locale;
+  t: Dictionary;
+}
+
+export async function Services({ locale, t }: ServicesProps) {
+  const services = await getServices(locale);
 
   return (
     <Section>
@@ -16,17 +23,15 @@ export async function Services() {
         <FadeIn>
           <div className="grid gap-6 md:grid-cols-[0.8fr_1.2fr] md:items-end">
             <div>
-              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
-                What We Do
+              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
+                {t.servicesHome.eyebrow}
               </span>
               <Heading level="h2" className="mt-3">
-                Design, build, and prepare products for launch.
+                {t.servicesHome.title}
               </Heading>
             </div>
             <p className="text-text-secondary md:text-lg">
-              We keep the scope practical, the interface sharp, and the build
-              path clear enough to move from concept to production without
-              unnecessary theater.
+              {t.servicesHome.body}
             </p>
           </div>
         </FadeIn>
@@ -44,8 +49,8 @@ export async function Services() {
 
         <FadeIn delay={0.25}>
           <div className="mt-10">
-            <Button variant="secondary" href="/services">
-              Explore services
+            <Button variant="secondary" href={localizedPath("/services", locale)}>
+              {t.common.exploreServices}
             </Button>
           </div>
         </FadeIn>

@@ -6,13 +6,21 @@ submissions, and Vercel deployment.
 ## Local Development
 
 ```bash
-pnpm install
+npm install
 cp .env.example .env.local
-pnpm dev
+npm run dev
 ```
 
 The site has safe local fallbacks, so it can run before Sanity and Formspree are
 configured.
+
+The public site is served with locale-prefixed routes:
+
+- English: `/en`
+- French: `/fr`
+
+Unprefixed public routes redirect to English. The theme toggle stores the
+visitor preference in `localStorage`.
 
 ## Environment Variables
 
@@ -51,8 +59,8 @@ The contact form will show a setup error if no Formspree env var is present.
 
 Vercel should use:
 
-- Install command: `pnpm install --frozen-lockfile`
-- Build command: `pnpm build`
+- Install command: `npm ci`
+- Build command: `npm run build`
 - Framework: Next.js
 
 Set the same environment variables for Production and Preview deployments.

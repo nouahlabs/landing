@@ -4,32 +4,39 @@ import { Heading } from "@/components/ui/Heading";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildren";
 import { getProcessSteps } from "@/sanity/lib/queries";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-export async function Process() {
-  const processSteps = await getProcessSteps();
+interface ProcessProps {
+  locale: Locale;
+  t: Dictionary;
+}
+
+export async function Process({ locale, t }: ProcessProps) {
+  const processSteps = await getProcessSteps(locale);
 
   return (
     <Section>
       <Container>
         <FadeIn>
           <div className="max-w-2xl">
-            <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
-              How We Work
+            <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
+              {t.process.eyebrow}
             </span>
             <Heading level="h2" className="mt-3">
-              A practical path from first conversation to live product.
+              {t.process.title}
             </Heading>
           </div>
         </FadeIn>
 
         <StaggerChildren
           staggerDelay={0.1}
-          className="mt-12 grid grid-cols-1 border-y border-border md:grid-cols-4"
+          className="mt-12 grid grid-cols-1 overflow-hidden rounded-[2rem] border border-border md:grid-cols-4"
         >
           {processSteps.map((step) => (
             <StaggerItem key={step.step}>
               <div className="h-full border-b border-border py-8 md:border-b-0 md:border-r md:px-6 md:last:border-r-0">
-                <span className="font-display text-sm font-semibold text-accent">
+                <span className="font-display text-sm font-semibold text-accent-foreground">
                   {String(step.step).padStart(2, "0")}
                 </span>
                 <h3 className="mt-4 font-display text-lg font-semibold">

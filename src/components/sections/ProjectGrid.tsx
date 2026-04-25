@@ -2,13 +2,16 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildren";
+import type { Locale } from "@/i18n/config";
 import type { Project } from "@/types";
 
 interface ProjectGridProps {
   projects: Project[];
+  locale: Locale;
+  label: string;
 }
 
-export function ProjectGrid({ projects }: ProjectGridProps) {
+export function ProjectGrid({ projects, locale, label }: ProjectGridProps) {
   return (
     <Section>
       <Container>
@@ -18,7 +21,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
         >
           {projects.map((project) => (
             <StaggerItem key={project.slug}>
-              <ProjectCard project={project} />
+              <ProjectCard project={project} locale={locale} label={label} />
             </StaggerItem>
           ))}
         </StaggerChildren>
