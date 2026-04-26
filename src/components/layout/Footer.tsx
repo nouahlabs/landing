@@ -21,9 +21,9 @@ export function Footer({ locale, settings, labels }: FooterProps) {
   const social = settings.social;
 
   return (
-    <footer className="border-t border-border bg-white">
+    <footer className="bg-page">
       <div className="mx-auto max-w-7xl px-6 py-14 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div className="grid grid-cols-1 gap-10 border-t border-border pt-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <Logo href={localizedPath("/", locale)} />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-text-secondary">
@@ -32,7 +32,7 @@ export function Footer({ locale, settings, labels }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-text">
+            <h4 className="font-display text-sm font-semibold uppercase text-text">
               Studio
             </h4>
             <nav className="mt-4 flex flex-col gap-3">
@@ -40,7 +40,7 @@ export function Footer({ locale, settings, labels }: FooterProps) {
                 <Link
                   key={item.href}
                   href={localizedPath(item.href, locale)}
-                  className="text-sm text-text-secondary transition-colors hover:text-accent-foreground"
+                  className="text-sm text-text-secondary transition-colors hover:text-text"
                 >
                   {item.label}
                 </Link>
@@ -49,7 +49,7 @@ export function Footer({ locale, settings, labels }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-text">
+            <h4 className="font-display text-sm font-semibold uppercase text-text">
               {labels.services}
             </h4>
             <nav className="mt-4 flex flex-col gap-3">
@@ -57,7 +57,7 @@ export function Footer({ locale, settings, labels }: FooterProps) {
                   <Link
                     key={label}
                     href={localizedPath("/services", locale)}
-                    className="text-sm text-text-secondary transition-colors hover:text-accent-foreground"
+                    className="text-sm text-text-secondary transition-colors hover:text-text"
                   >
                     {label}
                   </Link>
@@ -66,13 +66,13 @@ export function Footer({ locale, settings, labels }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-text">
+            <h4 className="font-display text-sm font-semibold uppercase text-text">
               {labels.contact}
             </h4>
             <div className="mt-4 flex flex-col gap-3">
               <a
                 href={`mailto:${settings.email}`}
-                className="text-sm text-text-secondary transition-colors hover:text-accent-foreground"
+                className="text-sm text-text-secondary transition-colors hover:text-text"
               >
                 {settings.email}
               </a>
@@ -81,7 +81,7 @@ export function Footer({ locale, settings, labels }: FooterProps) {
                   href={social.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-text-secondary transition-colors hover:text-accent-foreground"
+                  className="text-sm text-text-secondary transition-colors hover:text-text"
                 >
                   Twitter / X
                 </a>
@@ -91,7 +91,7 @@ export function Footer({ locale, settings, labels }: FooterProps) {
                   href={social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-text-secondary transition-colors hover:text-accent-foreground"
+                  className="text-sm text-text-secondary transition-colors hover:text-text"
                 >
                   LinkedIn
                 </a>

@@ -24,7 +24,7 @@ export function LanguageSwitcher({
   return (
     <div
       className={cn(
-        "inline-flex rounded-full border border-border bg-white p-1",
+        "inline-flex rounded-full border border-border bg-card p-1",
         compact && "p-0.5",
         className
       )}
@@ -38,8 +38,8 @@ export function LanguageSwitcher({
             "rounded-full text-xs font-semibold uppercase transition-colors",
             compact ? "px-2 py-1" : "px-3 py-1.5",
             item === locale
-              ? "bg-accent text-dark"
-              : "text-text-secondary hover:bg-lavender/45 hover:text-text"
+              ? "bg-text text-card"
+              : "text-text-secondary hover:bg-card-muted hover:text-text"
           )}
         >
           {item}

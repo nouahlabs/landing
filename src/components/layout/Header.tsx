@@ -26,8 +26,7 @@ export function Header({ locale, settings, labels }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const homePath = localizedPath("/", locale);
-  const onHomeTop =
-    (pathname === homePath || pathname === `${homePath}/`) && !scrolled;
+  const onHomeTop = pathname === homePath || pathname === `${homePath}/`;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -39,35 +38,42 @@ export function Header({ locale, settings, labels }: HeaderProps) {
     <>
       <header
         className={cn(
-          "fixed left-0 right-0 top-0 z-50 transition-all duration-300",
-          scrolled
-            ? "border-b border-border bg-background/90 shadow-sm backdrop-blur-md"
-            : "border-b border-border/60 bg-background/78 backdrop-blur-md",
+          "fixed left-0 right-0 top-0 z-50 px-3 pt-3 transition-all duration-300 sm:px-5",
           "text-text"
         )}
       >
-        <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 lg:px-8">
+        <div
+          className={cn(
+            "mx-auto flex h-18 max-w-[88rem] items-center justify-between rounded-full border px-5 backdrop-blur-xl transition-all duration-300 lg:px-6",
+            scrolled
+              ? "border-border bg-card/88 shadow-lg shadow-dark/5"
+              : "border-border bg-card/72 shadow-sm shadow-dark/5"
+          )}
+        >
           <Logo
             href={homePath}
-            accentClassName={onHomeTop ? "text-accent-foreground" : undefined}
+            accentClassName={onHomeTop ? "text-text-secondary" : undefined}
           />
 
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden items-center gap-2 md:flex">
             {settings.nav.map((item) => (
               <Link
                 key={item.href}
                 href={localizedPath(item.href, locale)}
                 className={cn(
-                  "text-sm font-medium transition-colors",
-                  "text-text-secondary hover:text-text"
+                  "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                  "text-text-secondary hover:bg-card-muted hover:text-text"
                 )}
               >
                 {item.label}
               </Link>
             ))}
+          </nav>
+
+          <nav className="hidden items-center gap-3 md:flex">
             <Link
               href={localizedPath("/contact", locale)}
-              className="rounded-full bg-accent px-5 py-2.5 font-display text-sm font-semibold text-dark transition-colors hover:bg-accent-light"
+              className="rounded-full border border-text bg-text px-5 py-2.5 font-display text-sm font-semibold text-card transition-all hover:-translate-y-0.5 hover:bg-text-secondary"
             >
               {labels.startProject}
             </Link>
@@ -83,8 +89,8 @@ export function Header({ locale, settings, labels }: HeaderProps) {
           <button
             onClick={() => setMobileOpen(true)}
             className={cn(
-              "flex flex-col gap-1.5 rounded-full border p-2.5 md:hidden",
-              "border-border bg-white"
+              "flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border md:hidden",
+              "border-border bg-card"
             )}
             aria-label="Open menu"
           >

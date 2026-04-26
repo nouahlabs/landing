@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/Badge";
@@ -60,42 +61,56 @@ export default async function WorkDetailPage({ params }: Props) {
 
   return (
     <>
-      <Section className="pt-36">
+      <Section className="bg-page pt-32">
         <Container>
           <FadeIn>
             <Link
               href={localizedPath("/work", locale)}
-              className="inline-flex text-sm font-medium text-text-secondary transition-colors hover:text-accent-foreground"
+              className="inline-flex text-sm font-medium text-text-secondary transition-colors hover:text-text"
             >
               &larr; {t.common.backToWork}
             </Link>
 
-            <div className="mt-8 flex flex-wrap items-center gap-2">
-              <Badge>{project.category}</Badge>
-              <span className="text-sm text-text-tertiary">{project.year}</span>
-              {project.status && (
-                <span className="rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-dark">
-                  {project.status}
-                </span>
-              )}
-            </div>
+            <div className="studio-panel mt-8 grid overflow-hidden rounded-[1.5rem] lg:grid-cols-[1fr_0.9fr]">
+              <div className="p-6 sm:p-10 lg:p-12">
+                <div className="flex flex-wrap items-center gap-2">
+                  <Badge>{project.category}</Badge>
+                  <span className="text-sm text-text-tertiary">{project.year}</span>
+                  {project.status && (
+                    <span className="rounded-full border border-border bg-accent-soft px-3 py-1 text-xs font-medium text-text">
+                      {project.status}
+                    </span>
+                  )}
+                </div>
 
-            <Heading level="h1" className="mt-5 max-w-4xl">
-              {project.title}
-            </Heading>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">
-              {project.subtitle}
-            </p>
+                <Heading level="h1" className="mt-5 max-w-4xl">
+                  {project.title}
+                </Heading>
+                <p className="mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">
+                  {project.subtitle}
+                </p>
+              </div>
+              <div className="relative min-h-72 border-t border-border lg:border-l lg:border-t-0">
+                <Image
+                  src={project.thumbnail ?? "/assets/studio/mobile-build.webp"}
+                  alt={`${project.title} preview`}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 500px, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </FadeIn>
         </Container>
       </Section>
 
-      <Section className="pt-0">
+      <Section className="bg-page pt-0">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
             <FadeIn>
-              <div className="rounded-[2rem] border border-border bg-white p-8">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
+              <div className="rounded-lg border border-border bg-card p-8">
+                <p className="text-sm font-semibold uppercase text-accent-foreground">
                   {t.workPage.overview}
                 </p>
                 <p className="mt-5 text-lg leading-relaxed text-text-secondary">
@@ -103,15 +118,15 @@ export default async function WorkDetailPage({ params }: Props) {
                 </p>
               </div>
 
-              <div className="mt-6 rounded-[2rem] border border-border bg-surface p-8">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
+              <div className="mt-6 rounded-lg border border-border bg-card-muted p-8">
+                <p className="text-sm font-semibold uppercase text-accent-foreground">
                   {t.workPage.productFocus}
                 </p>
                 <div className="mt-5 grid gap-4 sm:grid-cols-3">
                   {t.workPage.focusItems.map((item) => (
                     <div
                       key={item}
-                      className="rounded-2xl border border-border bg-white p-4 text-sm font-medium text-text-secondary"
+                      className="rounded-lg border border-border bg-card p-4 text-sm font-medium text-text-secondary"
                     >
                       {item}
                     </div>
@@ -121,9 +136,9 @@ export default async function WorkDetailPage({ params }: Props) {
             </FadeIn>
 
             <FadeIn delay={0.1}>
-              <aside className="rounded-[2rem] border border-border bg-white p-6">
+              <aside className="rounded-lg border border-border bg-card p-6">
                 <div>
-                  <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-text-tertiary">
+                  <h2 className="text-sm font-semibold uppercase text-text-tertiary">
                     {t.workPage.platform}
                   </h2>
                   <p className="mt-2 font-medium text-text">
@@ -132,7 +147,7 @@ export default async function WorkDetailPage({ params }: Props) {
                 </div>
 
                 <div className="mt-8">
-                  <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-text-tertiary">
+                  <h2 className="text-sm font-semibold uppercase text-text-tertiary">
                     {t.workPage.technologies}
                   </h2>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -148,7 +163,7 @@ export default async function WorkDetailPage({ params }: Props) {
                       {t.common.visitProduct}
                     </Button>
                   ) : (
-                    <p className="rounded-2xl bg-surface p-4 text-sm leading-relaxed text-text-secondary">
+                    <p className="rounded-lg bg-card-muted p-4 text-sm leading-relaxed text-text-secondary">
                       {t.common.productUrlPending}
                     </p>
                   )}

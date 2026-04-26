@@ -16,11 +16,11 @@ export async function Process({ locale, t }: ProcessProps) {
   const processSteps = await getProcessSteps(locale);
 
   return (
-    <Section>
+    <Section className="bg-page">
       <Container>
         <FadeIn>
-          <div className="max-w-2xl">
-            <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
+          <div className="max-w-2xl border-t border-border pt-10">
+            <span className="text-sm font-semibold uppercase text-accent-foreground">
               {t.process.eyebrow}
             </span>
             <Heading level="h2" className="mt-3">
@@ -31,11 +31,11 @@ export async function Process({ locale, t }: ProcessProps) {
 
         <StaggerChildren
           staggerDelay={0.1}
-          className="mt-12 grid grid-cols-1 overflow-hidden rounded-[2rem] border border-border md:grid-cols-4"
+          className="mt-12 grid grid-cols-1 overflow-hidden rounded-lg border border-border bg-card md:grid-cols-4"
         >
           {processSteps.map((step) => (
             <StaggerItem key={step.step}>
-              <div className="h-full border-b border-border py-8 md:border-b-0 md:border-r md:px-6 md:last:border-r-0">
+              <div className="h-full border-b border-border p-6 md:border-b-0 md:border-r md:last:border-r-0">
                 <span className="font-display text-sm font-semibold text-accent-foreground">
                   {String(step.step).padStart(2, "0")}
                 </span>

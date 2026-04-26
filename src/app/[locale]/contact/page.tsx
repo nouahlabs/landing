@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -39,50 +40,64 @@ export default async function ContactPage({ params }: ContactPageProps) {
 
   return (
     <>
-      <Section className="pt-36">
+      <Section className="bg-page pt-32">
         <Container>
-          <div className="mx-auto max-w-3xl">
-            <FadeIn>
-              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
-                {t.contactPage.eyebrow}
-              </span>
-              <Heading level="h1" className="mt-3">
-                {t.contactPage.title}
-              </Heading>
-              <p className="mt-4 text-lg text-text-secondary">
-                {t.contactPage.body}
-              </p>
-            </FadeIn>
-          </div>
+          <FadeIn>
+            <div className="studio-panel grid overflow-hidden rounded-[1.5rem] lg:grid-cols-[1fr_0.86fr]">
+              <div className="p-6 sm:p-10 lg:p-12">
+                <span className="text-sm font-semibold uppercase text-accent-foreground">
+                  {t.contactPage.eyebrow}
+                </span>
+                <Heading level="h1" className="mt-3">
+                  {t.contactPage.title}
+                </Heading>
+                <p className="mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">
+                  {t.contactPage.body}
+                </p>
+              </div>
+              <div className="relative min-h-72 border-t border-border lg:border-l lg:border-t-0">
+                <Image
+                  src="/assets/studio/dark-developer.webp"
+                  alt="Developer workspace for product delivery"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 480px, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </FadeIn>
         </Container>
       </Section>
 
-      <Section className="pt-0">
+      <Section className="bg-page pt-0">
         <Container>
-          <div className="grid grid-cols-1 gap-16 lg:grid-cols-5 lg:gap-20">
+          <div className="grid grid-cols-1 gap-10 border-t border-border pt-12 lg:grid-cols-5 lg:gap-16">
             <div className="lg:col-span-3">
               <FadeIn>
-                <ContactForm t={t} />
+                <div className="rounded-lg border border-border bg-card p-6 sm:p-8">
+                  <ContactForm t={t} />
+                </div>
               </FadeIn>
             </div>
 
             <div className="lg:col-span-2">
               <FadeIn delay={0.2}>
-                <div className="space-y-8">
+                <div className="rounded-lg border border-border bg-card-muted p-6">
                   <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-text-tertiary">
+                    <h3 className="text-sm font-semibold uppercase text-text-tertiary">
                       {t.common.email}
                     </h3>
                     <a
                       href="mailto:hello@nouahlabs.com"
-                      className="mt-2 block text-text-secondary transition-colors hover:text-accent-foreground"
+                      className="mt-2 block text-text-secondary transition-colors hover:text-text"
                     >
                       hello@nouahlabs.com
                     </a>
                   </div>
 
-                  <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-text-tertiary">
+                  <div className="mt-8 border-t border-border pt-8">
+                    <h3 className="text-sm font-semibold uppercase text-text-tertiary">
                       {t.common.social}
                     </h3>
                     <div className="mt-2 flex flex-col gap-2">
@@ -90,7 +105,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
                         href="https://twitter.com/nouahlabs"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-text-secondary transition-colors hover:text-accent-foreground"
+                        className="text-text-secondary transition-colors hover:text-text"
                       >
                         Twitter / X
                       </a>
@@ -98,15 +113,15 @@ export default async function ContactPage({ params }: ContactPageProps) {
                         href="https://linkedin.com/company/nouahlabs"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-text-secondary transition-colors hover:text-accent-foreground"
+                        className="text-text-secondary transition-colors hover:text-text"
                       >
                         LinkedIn
                       </a>
                     </div>
                   </div>
 
-                  <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-text-tertiary">
+                  <div className="mt-8 border-t border-border pt-8">
+                    <h3 className="text-sm font-semibold uppercase text-text-tertiary">
                       {t.common.responseTime}
                     </h3>
                     <p className="mt-2 text-text-secondary">

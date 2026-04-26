@@ -11,15 +11,15 @@ interface CallToActionProps {
 
 export function CallToAction({ locale, t }: CallToActionProps) {
   return (
-    <section className="bg-dark py-20 text-white lg:py-24">
+    <section className="bg-page py-20 text-text lg:py-24">
       <Container>
         <FadeIn>
-          <div className="flex flex-col justify-between gap-8 md:flex-row md:items-center">
+          <div className="studio-panel flex flex-col justify-between gap-8 rounded-[1.5rem] px-6 py-10 md:flex-row md:items-center lg:px-10">
             <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-light">
+              <p className="text-sm font-semibold uppercase text-accent-foreground">
                 {t.cta.eyebrow}
               </p>
-              <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-5xl">
+              <h2 className="mt-3 font-display text-3xl font-semibold leading-tight md:text-5xl">
                 {t.cta.title}
               </h2>
             </div>
@@ -30,7 +30,6 @@ export function CallToAction({ locale, t }: CallToActionProps) {
               <Button
                 variant="secondary"
                 href={localizedPath("/work", locale)}
-                className="border-white/20 bg-white/5 text-white hover:bg-white hover:text-dark"
               >
                 {t.common.seeWork}
               </Button>

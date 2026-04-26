@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -31,8 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
-      <head>
-        <script
+      <body className="bg-page" suppressHydrationWarning>
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               try {
@@ -45,8 +48,6 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body suppressHydrationWarning>
         {children}
       </body>
     </html>

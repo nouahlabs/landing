@@ -64,7 +64,7 @@ export function ThemeToggle({ labels, className }: ThemeToggleProps) {
       type="button"
       onClick={toggleTheme}
       className={cn(
-        "inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-white text-text transition-colors hover:bg-lavender/45",
+        "inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-text transition-colors hover:bg-card-muted",
         className
       )}
       suppressHydrationWarning

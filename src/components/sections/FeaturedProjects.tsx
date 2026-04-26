@@ -18,12 +18,12 @@ export async function FeaturedProjects({ locale, t }: FeaturedProjectsProps) {
   const featured = await getFeaturedProjects(locale);
 
   return (
-    <Section className="bg-surface">
+    <Section className="bg-page">
       <Container>
         <FadeIn>
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div className="flex flex-col justify-between gap-6 border-t border-border pt-10 md:flex-row md:items-end">
             <div>
-              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
+              <span className="text-sm font-semibold uppercase text-accent-foreground">
                 {t.featured.eyebrow}
               </span>
               <Heading level="h2" className="mt-3 max-w-2xl">
@@ -42,7 +42,7 @@ export async function FeaturedProjects({ locale, t }: FeaturedProjectsProps) {
 
         <StaggerChildren
           staggerDelay={0.12}
-          className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2"
+          className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2"
         >
           {featured.map((project) => (
             <StaggerItem key={project.slug}>

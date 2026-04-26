@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -42,27 +43,41 @@ export default async function WorkPage({ params }: WorkPageProps) {
 
   return (
     <>
-      <Section className="pt-36">
+      <Section className="bg-page pt-32">
         <Container>
           <FadeIn>
-            <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
-              {t.workPage.eyebrow}
-            </span>
-            <Heading level="h1" className="mt-3">
-              {t.workPage.title}
-            </Heading>
-            <p className="mt-4 max-w-2xl text-lg text-text-secondary">
-              {t.workPage.body}
-            </p>
+            <div className="studio-panel grid overflow-hidden rounded-[1.5rem] lg:grid-cols-[1fr_0.86fr]">
+              <div className="p-6 sm:p-10 lg:p-12">
+                <span className="text-sm font-semibold uppercase text-accent-foreground">
+                  {t.workPage.eyebrow}
+                </span>
+                <Heading level="h1" className="mt-3">
+                  {t.workPage.title}
+                </Heading>
+                <p className="mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">
+                  {t.workPage.body}
+                </p>
+              </div>
+              <div className="relative min-h-72 border-t border-border lg:border-l lg:border-t-0">
+                <Image
+                  src="/assets/studio/mobile-build.webp"
+                  alt="Mobile product build preview"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 480px, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </FadeIn>
         </Container>
       </Section>
 
-      <Section className="pt-0">
+      <Section className="bg-page pt-0">
         <Container>
           <StaggerChildren
             staggerDelay={0.1}
-            className="grid grid-cols-1 gap-6 md:grid-cols-2"
+            className="grid grid-cols-1 gap-5 border-t border-border pt-12 md:grid-cols-2"
           >
             {projects.map((project) => (
               <StaggerItem key={project.slug}>

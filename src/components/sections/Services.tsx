@@ -18,12 +18,12 @@ export async function Services({ locale, t }: ServicesProps) {
   const services = await getServices(locale);
 
   return (
-    <Section>
+    <Section className="bg-panel-soft">
       <Container>
         <FadeIn>
-          <div className="grid gap-6 md:grid-cols-[0.8fr_1.2fr] md:items-end">
+          <div className="grid gap-6 border-t border-border pt-10 md:grid-cols-[0.8fr_1.2fr] md:items-end">
             <div>
-              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
+              <span className="text-sm font-semibold uppercase text-accent-foreground">
                 {t.servicesHome.eyebrow}
               </span>
               <Heading level="h2" className="mt-3">
@@ -38,7 +38,7 @@ export async function Services({ locale, t }: ServicesProps) {
 
         <StaggerChildren
           staggerDelay={0.08}
-          className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
         >
           {services.slice(0, 6).map((service) => (
             <StaggerItem key={service.id}>

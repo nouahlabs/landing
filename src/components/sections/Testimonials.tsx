@@ -20,11 +20,11 @@ export async function Testimonials({ locale, t }: TestimonialsProps) {
   }
 
   return (
-    <Section className="bg-surface">
+    <Section className="bg-panel-soft">
       <Container>
         <FadeIn>
-          <div className="max-w-2xl">
-            <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
+          <div className="max-w-2xl border-t border-border pt-10">
+            <span className="text-sm font-semibold uppercase text-accent-foreground">
               {t.testimonials.eyebrow}
             </span>
             <Heading level="h2" className="mt-3">
@@ -39,7 +39,7 @@ export async function Testimonials({ locale, t }: TestimonialsProps) {
         >
           {testimonials.map((testimonial) => (
             <StaggerItem key={testimonial.id}>
-              <figure className="h-full rounded-3xl border border-border bg-white p-6">
+              <figure className="h-full rounded-lg border border-border bg-card p-6">
                 <blockquote className="text-sm leading-relaxed text-text-secondary">
                   &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>

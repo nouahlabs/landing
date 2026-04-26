@@ -1,4 +1,4 @@
-import { Container } from "@/components/ui/Container";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { localizedPath, type Locale } from "@/i18n/config";
@@ -11,79 +11,130 @@ interface HeroProps {
 
 export function Hero({ locale, t }: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-background pt-28 text-text transition-colors duration-300">
-      <div className="absolute inset-0 opacity-45">
-        <div className="absolute left-0 right-0 top-24 h-px bg-accent-light" />
-        <div className="absolute bottom-24 left-0 right-0 h-px bg-border/60" />
-        <div className="absolute left-[8%] top-0 h-full w-px bg-border/50" />
-        <div className="absolute right-[14%] top-0 h-full w-px bg-border/50" />
-      </div>
+    <section className="relative overflow-hidden bg-page px-3 pt-24 text-text transition-colors duration-300 sm:px-5">
+      <div className="relative mx-auto w-full max-w-[88rem]">
+        <div className="studio-panel hairline-grid relative overflow-hidden rounded-[1.5rem] px-5 py-12 sm:px-10 lg:min-h-[760px] lg:px-16 lg:py-20">
+          <div className="absolute inset-x-8 top-32 hidden h-px bg-border md:block" />
+          <div className="absolute inset-x-8 bottom-44 hidden h-px bg-border md:block" />
 
-      <Container className="relative">
-        <div className="grid min-h-[78vh] items-center gap-14 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
-          <div className="max-w-3xl">
-            <FadeIn delay={0.1}>
-              <span className="inline-flex rounded-full border border-border bg-white px-4 py-1.5 text-sm font-medium text-accent-foreground">
-                {t.hero.eyebrow}
-              </span>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <h1 className="mt-8 font-display text-5xl font-semibold leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
-                {t.hero.title}
-              </h1>
-            </FadeIn>
-
-            <FadeIn delay={0.3}>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary md:text-xl">
-                {t.hero.body}
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={0.4}>
-              <div className="mt-10 flex flex-wrap gap-3">
-                <Button href={localizedPath("/contact", locale)}>
-                  {t.common.startProject}
-                </Button>
-                <Button
-                  variant="secondary"
-                  href={localizedPath("/work", locale)}
-                >
-                  {t.common.viewWork}
-                </Button>
-              </div>
-            </FadeIn>
-          </div>
-
-          <FadeIn delay={0.25}>
-            <div className="relative">
-              <div className="grid gap-3">
-                <div className="rounded-2xl border border-border bg-white p-4 shadow-xl shadow-accent/10">
-                  <div className="flex items-center justify-between border-b border-border pb-3">
-                    <span className="text-xs uppercase tracking-[0.18em] text-accent-foreground">
-                      {t.hero.currentBuild}
-                    </span>
-                    <span className="text-xs text-text-tertiary">Hirelify</span>
+          <div className="grid items-center gap-12 lg:grid-cols-[1.12fr_0.88fr]">
+            <div className="max-w-5xl">
+              <FadeIn delay={0.1}>
+                <div className="inline-flex items-center gap-3">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-text text-card">
+                    <span className="h-4 w-2 rounded-full bg-card" />
+                    <span className="ml-1 h-4 w-2 rounded-full bg-card" />
+                  </span>
+                  <div>
+                    <p className="font-display text-xl font-semibold leading-tight">
+                      {t.hero.eyebrow}
+                    </p>
+                    <p className="text-sm text-text-secondary">
+                      {t.hero.capabilities.join(" / ")}
+                    </p>
                   </div>
-                  <div className="mt-5 grid gap-4 md:grid-cols-[0.7fr_1.3fr]">
-                    <div className="mx-auto h-56 w-28 rounded-2xl border border-border bg-gradient-to-b from-maya-blue/50 to-lavender/40 p-3">
-                      <div className="h-4 rounded-full bg-white/60" />
-                      <div className="mt-4 h-20 rounded-xl bg-white/35" />
-                      <div className="mt-4 space-y-2">
-                        <div className="h-2 rounded-full bg-text-tertiary/35" />
-                        <div className="h-2 w-2/3 rounded-full bg-text-tertiary/25" />
-                        <div className="h-8 rounded-full bg-accent/70" />
-                      </div>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <h1 className="mt-12 max-w-5xl font-display text-5xl font-semibold leading-[0.95] text-text sm:text-6xl md:text-7xl lg:text-8xl">
+                  {t.hero.title}
+                </h1>
+              </FadeIn>
+
+              <FadeIn delay={0.3}>
+                <div className="mt-9 max-w-2xl border-t border-border pt-7">
+                  <p className="text-xl leading-relaxed text-text-secondary md:text-2xl">
+                    {t.hero.body}
+                  </p>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={0.4}>
+                <div className="mt-9 flex flex-wrap items-center gap-4">
+                  <Button href={localizedPath("/contact", locale)}>
+                    {t.common.startProject}
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    href={localizedPath("/work", locale)}
+                    className="underline decoration-border underline-offset-4"
+                  >
+                    {t.common.viewWork}
+                  </Button>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={0.5}>
+                <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-border pt-6">
+                  <div className="flex -space-x-2">
+                    <span className="h-9 w-9 rounded-full border-2 border-panel bg-accent" />
+                    <span className="h-9 w-9 rounded-full border-2 border-panel bg-success" />
+                    <span className="h-9 w-9 rounded-full border-2 border-panel bg-text" />
+                  </div>
+                  <p className="max-w-xs text-sm leading-relaxed text-text-secondary">
+                    {t.hero.productSystems}
+                  </p>
+                </div>
+              </FadeIn>
+            </div>
+
+            <FadeIn delay={0.1}>
+              <div className="relative mx-auto w-full max-w-[620px] lg:max-w-none">
+                <div className="relative ml-auto aspect-[0.78] max-h-[620px] overflow-hidden rounded-[1.5rem] bg-card shadow-2xl shadow-black/10 lg:w-[74%]">
+                  <Image
+                    src="/assets/studio/product-ui.webp"
+                    alt="Mobile product interface being reviewed"
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 520px, 90vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/18 via-transparent to-white/12" />
+                </div>
+
+                <div className="glass-panel absolute right-0 top-8 hidden w-44 rounded-[1.25rem] p-5 md:block">
+                  <p className="text-xs uppercase text-text-secondary">
+                    {t.hero.currentBuild}
+                  </p>
+                  <p className="mt-6 font-display text-4xl font-semibold leading-none">
+                    03
+                  </p>
+                  <p className="mt-2 text-sm leading-tight text-text-secondary">
+                    {t.hero.pillars.join(", ")}
+                  </p>
+                </div>
+
+                <div className="glass-panel absolute left-0 top-36 hidden w-72 rounded-full px-5 py-4 md:flex md:items-center md:gap-3">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-success text-card">
+                    1
+                  </span>
+                  <span className="text-sm font-medium text-text">
+                    {t.hero.pillars[0]} / {t.hero.pillars[1]}
+                  </span>
+                </div>
+
+                <div className="glass-panel absolute -bottom-5 right-4 w-[min(22rem,90vw)] rounded-[1.25rem] p-4 sm:right-10">
+                  <div className="grid grid-cols-[6rem_1fr] gap-4">
+                    <div className="relative overflow-hidden rounded-lg bg-card-muted">
+                      <Image
+                        src="/assets/studio/mobile-build.webp"
+                        alt="Mobile build workspace"
+                        width={220}
+                        height={180}
+                        className="h-full min-h-24 w-full object-cover"
+                      />
                     </div>
                     <div className="flex flex-col justify-center">
-                      <p className="font-display text-3xl font-semibold tracking-tight">
-                        {t.hero.productSystems}
+                      <p className="text-sm text-text-secondary">Hirelify</p>
+                      <p className="font-display text-2xl font-semibold leading-tight">
+                        {t.hero.currentBuild}
                       </p>
-                      <div className="mt-6 grid grid-cols-3 gap-2">
+                      <div className="mt-3 flex flex-wrap gap-2">
                         {t.hero.pillars.map((item) => (
                           <span
                             key={item}
-                            className="rounded-full border border-border bg-surface px-3 py-3 text-center text-xs text-text-secondary"
+                            className="rounded-full border border-border bg-card px-2.5 py-1 text-xs text-text-secondary"
                           >
                             {item}
                           </span>
@@ -92,22 +143,11 @@ export function Hero({ locale, t }: HeroProps) {
                     </div>
                   </div>
                 </div>
-
-                <div className="grid grid-cols-3 gap-3 text-sm text-text-secondary">
-                  {t.hero.capabilities.map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-2xl border border-border bg-white p-4"
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
               </div>
-            </div>
-          </FadeIn>
+            </FadeIn>
+          </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

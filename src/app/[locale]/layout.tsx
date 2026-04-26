@@ -30,7 +30,7 @@ export default async function LocaleLayout({
   const services = await getServices(locale);
 
   return (
-    <div lang={locale}>
+    <div lang={locale} className="min-h-screen bg-page">
       <Header
         locale={locale}
         settings={settings}
@@ -41,7 +41,9 @@ export default async function LocaleLayout({
           themeToggle: dictionary.common.themeToggle,
         }}
       />
-      <main>{children}</main>
+      <main className="min-h-screen overflow-hidden bg-page">
+        {children}
+      </main>
       <Footer
         locale={locale}
         settings={settings}

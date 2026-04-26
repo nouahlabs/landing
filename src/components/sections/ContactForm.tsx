@@ -81,7 +81,7 @@ export function ContactForm({ t }: ContactFormProps) {
             type="text"
             required
             disabled={disabled}
-            className="mt-2 block w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-accent disabled:cursor-not-allowed disabled:bg-surface"
+            className="mt-2 block w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-text disabled:cursor-not-allowed disabled:bg-card-muted"
             placeholder={t.contactForm.namePlaceholder}
           />
         </div>
@@ -95,7 +95,7 @@ export function ContactForm({ t }: ContactFormProps) {
             type="email"
             required
             disabled={disabled}
-            className="mt-2 block w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-accent disabled:cursor-not-allowed disabled:bg-surface"
+            className="mt-2 block w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-text disabled:cursor-not-allowed disabled:bg-card-muted"
             placeholder="you@company.com"
           />
         </div>
@@ -110,7 +110,7 @@ export function ContactForm({ t }: ContactFormProps) {
           name="company"
           type="text"
           disabled={disabled}
-          className="mt-2 block w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-accent disabled:cursor-not-allowed disabled:bg-surface"
+          className="mt-2 block w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-text disabled:cursor-not-allowed disabled:bg-card-muted"
           placeholder={t.contactForm.companyPlaceholder}
         />
       </div>
@@ -129,7 +129,7 @@ export function ContactForm({ t }: ContactFormProps) {
             name="projectType"
             required
             disabled={disabled}
-            className="mt-2 block w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors focus:border-accent disabled:cursor-not-allowed disabled:bg-surface"
+            className="mt-2 block w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-text outline-none transition-colors focus:border-text disabled:cursor-not-allowed disabled:bg-card-muted"
           >
             <option value="">{t.contactForm.selectType}</option>
             {t.contactForm.projectTypes.map((type) => (
@@ -147,7 +147,7 @@ export function ContactForm({ t }: ContactFormProps) {
             id="budget"
             name="budget"
             disabled={disabled}
-            className="mt-2 block w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors focus:border-accent disabled:cursor-not-allowed disabled:bg-surface"
+            className="mt-2 block w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-text outline-none transition-colors focus:border-text disabled:cursor-not-allowed disabled:bg-card-muted"
           >
             <option value="">{t.contactForm.selectBudget}</option>
             {t.contactForm.budgets.map((range) => (
@@ -170,7 +170,7 @@ export function ContactForm({ t }: ContactFormProps) {
           rows={5}
           required
           disabled={disabled}
-          className="mt-2 block w-full resize-none rounded-2xl border border-border bg-white px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-accent disabled:cursor-not-allowed disabled:bg-surface"
+          className="mt-2 block w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-tertiary focus:border-text disabled:cursor-not-allowed disabled:bg-card-muted"
           placeholder={t.contactForm.messagePlaceholder}
         />
       </div>
@@ -179,8 +179,8 @@ export function ContactForm({ t }: ContactFormProps) {
         <p
           className={
             state === "success"
-              ? "rounded-2xl bg-accent-soft px-4 py-3 text-sm text-dark"
-              : "rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-700"
+              ? "rounded-lg bg-accent-soft px-4 py-3 text-sm text-text"
+              : "rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700"
           }
           role="status"
         >

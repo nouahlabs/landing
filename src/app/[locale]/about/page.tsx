@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -40,37 +41,46 @@ export default async function AboutPage({ params }: AboutPageProps) {
 
   return (
     <>
-      <Section className="pt-36">
+      <Section className="bg-page pt-32">
         <Container>
-          <div className="mx-auto max-w-3xl">
-            <FadeIn>
-              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
-                {t.aboutPage.eyebrow}
-              </span>
-              <Heading level="h1" className="mt-3">
-                {t.aboutPage.title}
-              </Heading>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              {t.aboutPage.paragraphs.map((paragraph) => (
-                <p
-                  key={paragraph}
-                  className="mt-4 text-lg leading-relaxed text-text-secondary first:mt-6"
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </FadeIn>
-          </div>
+          <FadeIn>
+            <div className="studio-panel grid overflow-hidden rounded-[1.5rem] lg:grid-cols-[1fr_0.9fr]">
+              <div className="p-6 sm:p-10 lg:p-12">
+                <span className="text-sm font-semibold uppercase text-accent-foreground">
+                  {t.aboutPage.eyebrow}
+                </span>
+                <Heading level="h1" className="mt-3">
+                  {t.aboutPage.title}
+                </Heading>
+                {t.aboutPage.paragraphs.map((paragraph) => (
+                  <p
+                    key={paragraph}
+                    className="mt-4 text-lg leading-relaxed text-text-secondary first:mt-6"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              <div className="relative min-h-80 border-t border-border lg:border-l lg:border-t-0">
+                <Image
+                  src="/assets/studio/workspace-detail.webp"
+                  alt="Focused product studio workspace"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 500px, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </FadeIn>
         </Container>
       </Section>
 
-      <Section className="bg-surface">
+      <Section className="bg-panel-soft">
         <Container>
           <FadeIn>
             <div className="mx-auto max-w-2xl text-center">
-              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
+              <span className="text-sm font-semibold uppercase text-accent-foreground">
                 {t.aboutPage.philosophyEyebrow}
               </span>
               <Heading level="h2" className="mt-3">
@@ -85,7 +95,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
           >
             {t.aboutPage.values.map((value) => (
               <StaggerItem key={value.title}>
-                <div className="h-full rounded-3xl border border-border bg-white p-6">
+                <div className="h-full rounded-lg border border-border bg-card p-6">
                   <h3 className="font-display text-lg font-semibold">
                     {value.title}
                   </h3>
@@ -99,12 +109,12 @@ export default async function AboutPage({ params }: AboutPageProps) {
         </Container>
       </Section>
 
-      <Section>
+      <Section className="bg-page">
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20">
             <FadeIn>
               <div>
-                <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
+                <span className="text-sm font-semibold uppercase text-accent-foreground">
                   {t.aboutPage.audienceEyebrow}
                 </span>
                 <Heading level="h2" className="mt-3">
@@ -126,7 +136,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
                 {t.aboutPage.audiences.map((audience) => (
                   <div
                     key={audience.title}
-                    className="rounded-3xl border border-border bg-surface p-6"
+                    className="rounded-lg border border-border bg-card-muted p-6"
                   >
                     <h3 className="font-display font-semibold">
                       {audience.title}

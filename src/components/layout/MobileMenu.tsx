@@ -48,7 +48,7 @@ export function MobileMenu({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 bg-dark/50"
+            className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
             onClick={onClose}
           />
           <motion.div
@@ -56,13 +56,13 @@ export function MobileMenu({
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed bottom-0 right-0 top-0 z-50 w-80 rounded-l-2xl border-l border-border bg-white p-8 shadow-2xl shadow-dark/10"
+            className="fixed bottom-0 right-0 top-0 z-50 w-[min(22rem,calc(100vw-1rem))] border-l border-border bg-card p-6 shadow-2xl shadow-black/20"
           >
             <div className="flex items-center justify-between">
               <Logo href={localizedPath("/", locale)} />
               <button
                 onClick={onClose}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-xl leading-none text-text-secondary hover:bg-lavender/45 hover:text-text"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-xl leading-none text-text-secondary hover:bg-card-muted hover:text-text"
                 aria-label="Close menu"
               >
                 &times;
@@ -75,7 +75,7 @@ export function MobileMenu({
                   key={item.href}
                   href={localizedPath(item.href, locale)}
                   onClick={onClose}
-                  className="font-display text-lg font-medium text-text transition-colors hover:text-accent-foreground"
+                  className="border-b border-border pb-4 font-display text-lg font-medium text-text transition-colors hover:text-accent-foreground"
                 >
                   {item.label}
                 </Link>
@@ -85,7 +85,7 @@ export function MobileMenu({
             <Link
               href={localizedPath("/contact", locale)}
               onClick={onClose}
-              className="mt-10 block rounded-full bg-accent px-6 py-3 text-center font-display text-sm font-semibold text-dark transition-colors hover:bg-accent-light"
+              className="mt-10 block rounded-full border border-text bg-text px-6 py-3 text-center font-display text-sm font-semibold text-card transition-all hover:bg-text-secondary"
             >
               {labels.startProject}
             </Link>
