@@ -32,7 +32,7 @@ export function WhyUs({ t }: WhyUsProps) {
             {t.whyUs.reasons.map((reason, index) => (
               <StaggerItem key={reason.title}>
                 <div className="h-full bg-text p-6">
-                  <span className="text-sm font-semibold text-accent-light">
+                  <span className="font-display text-base font-semibold text-card/75">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="mt-5 font-display text-lg font-semibold text-card">
