@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Logo } from "./Logo";
 import { MobileMenu } from "./MobileMenu";
 import { ThemeToggle } from "./ThemeToggle";
@@ -24,9 +23,7 @@ interface HeaderProps {
 export function Header({ locale, settings, labels }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const pathname = usePathname();
   const homePath = localizedPath("/", locale);
-  const onHomeTop = pathname === homePath || pathname === `${homePath}/`;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -50,10 +47,7 @@ export function Header({ locale, settings, labels }: HeaderProps) {
               : "border-border bg-card/72 shadow-sm shadow-dark/5"
           )}
         >
-          <Logo
-            href={homePath}
-            accentClassName={onHomeTop ? "text-text-secondary" : undefined}
-          />
+          <Logo href={homePath} />
 
           <nav className="hidden items-center gap-2 md:flex">
             {settings.nav.map((item) => (
