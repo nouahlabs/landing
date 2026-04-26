@@ -13,12 +13,12 @@ export function Hero({ locale, t }: HeroProps) {
   return (
     <section className="relative overflow-hidden bg-page px-3 pt-24 text-text transition-colors duration-300 sm:px-5">
       <div className="relative mx-auto w-full max-w-[88rem]">
-        <div className="studio-panel hairline-grid relative overflow-hidden rounded-[1.5rem] px-5 py-12 sm:px-10 lg:min-h-[760px] lg:px-16 lg:py-20">
+        <div className="studio-panel hairline-grid relative overflow-hidden rounded-[1.5rem] px-5 py-12 sm:px-10 lg:min-h-[720px] lg:px-14 lg:py-16 xl:px-16">
           <div className="absolute inset-x-8 top-32 hidden h-px bg-border md:block" />
-          <div className="absolute inset-x-8 bottom-44 hidden h-px bg-border md:block" />
+          <div className="absolute inset-x-8 bottom-36 hidden h-px bg-border md:block" />
 
-          <div className="grid items-center gap-12 lg:grid-cols-[1.12fr_0.88fr]">
-            <div className="max-w-5xl">
+          <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.72fr)] xl:gap-16">
+            <div className="max-w-[58rem]">
               <FadeIn delay={0.1}>
                 <div className="inline-flex items-center gap-3">
                   <span className="flex h-11 w-11 items-center justify-center rounded-full bg-text text-card">
@@ -37,14 +37,14 @@ export function Hero({ locale, t }: HeroProps) {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h1 className="mt-12 max-w-5xl font-display text-5xl font-semibold leading-[0.95] text-text sm:text-6xl md:text-7xl lg:text-8xl">
+                <h1 className="mt-12 max-w-[58rem] text-balance font-display text-5xl font-semibold leading-[0.94] text-text sm:text-6xl md:text-7xl lg:text-[6.25rem] xl:text-[7rem]">
                   {t.hero.title}
                 </h1>
               </FadeIn>
 
               <FadeIn delay={0.3}>
-                <div className="mt-9 max-w-2xl border-t border-border pt-7">
-                  <p className="text-xl leading-relaxed text-text-secondary md:text-2xl">
+                <div className="mt-8 max-w-3xl border-t border-border pt-6">
+                  <p className="text-lg leading-relaxed text-text-secondary md:text-xl">
                     {t.hero.body}
                   </p>
                 </div>
@@ -80,8 +80,8 @@ export function Hero({ locale, t }: HeroProps) {
             </div>
 
             <FadeIn delay={0.1}>
-              <div className="relative mx-auto w-full max-w-[620px] lg:max-w-none">
-                <div className="relative ml-auto aspect-[0.78] max-h-[620px] overflow-hidden rounded-[1.5rem] bg-card shadow-2xl shadow-black/10 lg:w-[74%]">
+              <div className="relative mx-auto mt-4 w-full max-w-[620px] lg:mt-28 lg:max-w-none xl:mt-24">
+                <div className="relative ml-auto aspect-[0.78] max-h-[560px] overflow-hidden rounded-[1.5rem] bg-card shadow-2xl shadow-black/10 lg:w-[82%]">
                   <Image
                     src="/assets/studio/product-ui.webp"
                     alt="Mobile product interface being reviewed"
@@ -105,7 +105,7 @@ export function Hero({ locale, t }: HeroProps) {
                   </p>
                 </div>
 
-                <div className="glass-panel absolute left-0 top-36 hidden w-72 rounded-full px-5 py-4 md:flex md:items-center md:gap-3">
+                <div className="glass-panel absolute left-2 top-36 hidden w-64 rounded-full px-5 py-4 md:flex md:items-center md:gap-3 xl:left-0 xl:w-72">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-success text-card">
                     1
                   </span>
