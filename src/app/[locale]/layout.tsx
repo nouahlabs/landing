@@ -54,6 +54,7 @@ export default async function LocaleLayout({
           footerNote: dictionary.common.footerNote,
           serviceLinks: services.slice(0, 4).map((service) => service.title),
           language: dictionary.common.language,
+          legal: dictionary.common.legal,
         }}
       />
     </div>

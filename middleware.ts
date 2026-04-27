@@ -10,6 +10,7 @@ export function middleware(request: NextRequest) {
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
+    pathname.startsWith("/.well-known") ||
     pathname.startsWith("/studio") ||
     pathname === "/favicon.ico" ||
     PUBLIC_FILE.test(pathname)

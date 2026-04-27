@@ -37,6 +37,18 @@ export const siteSettingsType = defineType({
       validation: (rule) => rule.required().email(),
     }),
     defineField({
+      name: "supportEmail",
+      title: "Support Email",
+      type: "string",
+      validation: (rule) => rule.email(),
+    }),
+    defineField({
+      name: "developerName",
+      title: "App Store Developer Name",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: "social",
       title: "Social Links",
       type: "object",
@@ -69,6 +81,47 @@ export const siteSettingsType = defineType({
             }),
           ],
         },
+      ],
+    }),
+    defineField({
+      name: "legalLinks",
+      title: "Legal and Support Links",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({
+              name: "label",
+              title: "Label",
+              type: "string",
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: "href",
+              title: "Href",
+              type: "string",
+              validation: (rule) => rule.required(),
+            }),
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: "formEndpoints",
+      title: "Formspree Endpoints",
+      type: "object",
+      description:
+        "Optional public Formspree endpoints for specific compliance forms.",
+      fields: [
+        defineField({ name: "contact", title: "Contact", type: "url" }),
+        defineField({ name: "support", title: "Support", type: "url" }),
+        defineField({
+          name: "accountDeletion",
+          title: "Account Deletion",
+          type: "url",
+        }),
+        defineField({ name: "report", title: "Report", type: "url" }),
       ],
     }),
   ],

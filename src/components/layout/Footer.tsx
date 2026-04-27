@@ -14,6 +14,7 @@ interface FooterProps {
     footerNote: string;
     serviceLinks: string[];
     language: string;
+    legal: string;
   };
 }
 
@@ -23,7 +24,7 @@ export function Footer({ locale, settings, labels }: FooterProps) {
   return (
     <footer className="bg-page">
       <div className="mx-auto max-w-7xl px-6 py-14 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 border-t border-border pt-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div className="grid grid-cols-1 gap-10 border-t border-border pt-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr]">
           <div>
             <Logo href={localizedPath("/", locale)} />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-text-secondary">
@@ -97,6 +98,23 @@ export function Footer({ locale, settings, labels }: FooterProps) {
                 </a>
               )}
             </div>
+          </div>
+
+          <div>
+            <h4 className="font-display text-sm font-semibold uppercase text-text">
+              {labels.legal}
+            </h4>
+            <nav className="mt-4 flex flex-col gap-3">
+              {settings.legalLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={localizedPath(item.href, locale)}
+                  className="text-sm text-text-secondary transition-colors hover:text-text"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
           </div>
         </div>
 

@@ -10,6 +10,7 @@ interface ButtonProps {
   className?: string;
   type?: "button" | "submit";
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 const variants: Record<ButtonVariant, string> = {
@@ -27,9 +28,10 @@ export function Button({
   className,
   type = "button",
   onClick,
+  disabled,
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center rounded-full px-6 py-3 font-display text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/45",
+    "inline-flex items-center justify-center rounded-full px-6 py-3 font-display text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/45 disabled:cursor-not-allowed disabled:opacity-60",
     variants[variant],
     className
   );
@@ -53,7 +55,7 @@ export function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} className={classes} disabled={disabled}>
       {children}
     </button>
   );

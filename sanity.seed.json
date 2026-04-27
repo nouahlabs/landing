@@ -7,6 +7,8 @@
     "description": "Nouah Labs is a focused app development studio for founders and teams that need thoughtful mobile apps, web products, and launch-ready digital systems.",
     "url": "https://nouahlabs.com",
     "email": "hello@nouahlabs.com",
+    "supportEmail": "support@nouahlabs.com",
+    "developerName": "Nouah Labs",
     "social": {
       "twitter": "https://twitter.com/nouahlabs",
       "linkedin": "https://linkedin.com/company/nouahlabs"
@@ -16,6 +18,109 @@
       { "_key": "services", "label": "Services", "href": "/services" },
       { "_key": "about", "label": "About", "href": "/about" },
       { "_key": "contact", "label": "Contact", "href": "/contact" }
+    ],
+    "legalLinks": [
+      { "_key": "privacy", "label": "Privacy Policy", "href": "/legal/privacy" },
+      { "_key": "terms", "label": "Terms", "href": "/legal/terms" },
+      { "_key": "ugc", "label": "UGC Policy", "href": "/legal/ugc-policy" },
+      { "_key": "support", "label": "Support", "href": "/support" },
+      { "_key": "deletion", "label": "Account Deletion", "href": "/account-deletion" },
+      { "_key": "report", "label": "Report", "href": "/report" }
+    ],
+    "formEndpoints": {}
+  },
+  {
+    "_id": "app-hirelify",
+    "_type": "appProduct",
+    "name": "Hirelify",
+    "slug": { "_type": "slug", "current": "hirelify" },
+    "tagline": "A focused mobile app for better job applications.",
+    "description": "Hirelify helps job seekers organize application materials, improve CV readiness, and move from preparation to application with less friction.",
+    "platforms": ["iOS", "Android"],
+    "status": "In development",
+    "marketingUrl": "https://nouahlabs.com/en/apps/hirelify",
+    "supportUrl": "https://nouahlabs.com/en/support",
+    "privacyUrl": "https://nouahlabs.com/en/legal/privacy",
+    "termsUrl": "https://nouahlabs.com/en/legal/terms",
+    "deletionUrl": "https://nouahlabs.com/en/account-deletion",
+    "reportUrl": "https://nouahlabs.com/en/report",
+    "oauthRedirectUrls": ["https://nouahlabs.com/en/apps/hirelify"],
+    "authorizedDomainNotes": "Use nouahlabs.com as the authorized domain. Store and OAuth console URLs should use explicit /en/ paths.",
+    "reviewerNotes": "Public store URLs and demo credentials should be added before review if the app requires authentication."
+  },
+  {
+    "_id": "legal-privacy",
+    "_type": "legalPage",
+    "type": "privacy",
+    "title": "Privacy Policy",
+    "slug": { "_type": "slug", "current": "privacy" },
+    "effectiveDate": "2026-04-27",
+    "summary": "This policy explains how Nouah Labs and the apps we publish collect, use, protect, retain, and delete personal information.",
+    "contactEmail": "privacy@nouahlabs.com",
+    "sections": [
+      { "_key": "collect", "heading": "Information we collect", "body": "Depending on the app or service, we may collect account details, contact information, profile details, device information, diagnostics, app activity, support messages, and content you choose to submit." },
+      { "_key": "use", "heading": "How we use information", "body": "We use information to provide app functionality, authenticate users, operate support, improve reliability, prevent abuse, respond to legal requests, and communicate important service updates." },
+      { "_key": "retain", "heading": "Retention and deletion", "body": "We retain information only as long as needed for the app, legal, safety, fraud-prevention, and support purposes. Users can request account and data deletion from the account deletion page." }
+    ]
+  },
+  {
+    "_id": "legal-terms",
+    "_type": "legalPage",
+    "type": "terms",
+    "title": "Terms of Service",
+    "slug": { "_type": "slug", "current": "terms" },
+    "effectiveDate": "2026-04-27",
+    "summary": "These terms define the rules for using Nouah Labs websites, mobile apps, web apps, and support services.",
+    "contactEmail": "legal@nouahlabs.com",
+    "sections": [
+      { "_key": "use", "heading": "Use of services", "body": "You may use Nouah Labs services only in lawful ways and only according to the rules shown in the relevant app, store listing, and these terms." },
+      { "_key": "accounts", "heading": "Accounts", "body": "You are responsible for the accuracy of account information and for keeping your credentials secure. We may restrict accounts that violate these terms or create safety risks." },
+      { "_key": "prohibited", "heading": "Prohibited behavior", "body": "Do not misuse the services, attempt unauthorized access, interfere with service operation, infringe intellectual property rights, harass others, or submit illegal or harmful content." }
+    ]
+  },
+  {
+    "_id": "legal-ugc",
+    "_type": "legalPage",
+    "type": "ugc-policy",
+    "title": "User-Generated Content Policy",
+    "slug": { "_type": "slug", "current": "ugc-policy" },
+    "effectiveDate": "2026-04-27",
+    "summary": "This policy applies to Nouah Labs apps that allow users to post, send, upload, share, or display content to other users.",
+    "contactEmail": "support@nouahlabs.com",
+    "sections": [
+      { "_key": "content", "heading": "Objectionable content", "body": "Users may not submit content that is illegal, exploitative, sexually abusive, hateful, threatening, harassing, bullying, deceptive, spammy, or otherwise unsafe for the service." },
+      { "_key": "moderation", "heading": "Moderation", "body": "Nouah Labs may review reports, remove content, restrict accounts, preserve evidence when legally required, and escalate urgent safety issues to appropriate channels." },
+      { "_key": "reporting", "heading": "Reporting and blocking", "body": "Apps with social or sharing features should include in-app reporting and blocking. Non-users and users without app access can use the public report page." }
+    ]
+  },
+  {
+    "_id": "legal-account-deletion",
+    "_type": "legalPage",
+    "type": "account-deletion",
+    "title": "Account and Data Deletion",
+    "slug": { "_type": "slug", "current": "account-deletion" },
+    "effectiveDate": "2026-04-27",
+    "summary": "Use this page to request deletion of an account and associated personal data from a Nouah Labs app.",
+    "contactEmail": "privacy@nouahlabs.com",
+    "sections": [
+      { "_key": "scope", "heading": "What can be deleted", "body": "Deletion requests cover the account and personal data associated with that account, subject to limited retention required for security, fraud prevention, legal obligations, dispute handling, and transaction records." },
+      { "_key": "needed", "heading": "What we need", "body": "Provide the app name, account email or phone number, and any details needed to identify the account. Do not send passwords or one-time codes." },
+      { "_key": "processing", "heading": "Processing", "body": "We will review the request, verify ownership when needed, and complete eligible deletion requests within a reasonable period." }
+    ]
+  },
+  {
+    "_id": "legal-report-policy",
+    "_type": "legalPage",
+    "type": "report-policy",
+    "title": "Report Content or Safety Issue",
+    "slug": { "_type": "slug", "current": "report-policy" },
+    "effectiveDate": "2026-04-27",
+    "summary": "Use this page to report objectionable content, abusive users, illegal content, safety concerns, or policy violations in a Nouah Labs app.",
+    "contactEmail": "support@nouahlabs.com",
+    "sections": [
+      { "_key": "what", "heading": "What to report", "body": "Reports can cover abusive behavior, illegal content, child safety concerns, harassment, impersonation, scams, privacy concerns, intellectual property complaints, or other policy violations." },
+      { "_key": "review", "heading": "Review process", "body": "We review reports based on severity, available evidence, applicable law, and the product policy. Actions may include removing content, restricting users, preserving evidence, or contacting the reporter for more information." },
+      { "_key": "urgent", "heading": "Urgent risk", "body": "If there is immediate danger, contact local emergency services first. The report form is not an emergency service." }
     ]
   },
   {

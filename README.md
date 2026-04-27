@@ -32,6 +32,9 @@ NEXT_PUBLIC_SANITY_DATASET=production
 SANITY_PROJECT_ID=your_sanity_project_id
 SANITY_DATASET=production
 NEXT_PUBLIC_FORMSPREE_FORM_ID=your_formspree_form_id
+NEXT_PUBLIC_FORMSPREE_SUPPORT_ENDPOINT=
+NEXT_PUBLIC_FORMSPREE_ACCOUNT_DELETION_ENDPOINT=
+NEXT_PUBLIC_FORMSPREE_REPORT_ENDPOINT=
 ```
 
 You can use `NEXT_PUBLIC_FORMSPREE_ENDPOINT` instead of
@@ -48,8 +51,8 @@ The embedded Studio lives at `/studio`.
 3. In Sanity project settings, add CORS origins for local and production:
    `http://localhost:3000`, `http://localhost:3001`, and
    `https://nouahlabs.com`.
-4. Create content for `Site Settings`, `Project`, `Service`, `Testimonial`,
-   and `Process Step`.
+4. Create content for `Site Settings`, `App Product`, `Legal Page`, `Project`,
+   `Service`, `Testimonial`, and `Process Step`.
 
 Useful commands:
 
@@ -81,6 +84,27 @@ account, or a token with the "Deploy Studio (Token only)" role).
 Work cards open internal detail pages such as `/work/hirelify`. The
 `externalUrl` field is optional and should only be filled after the product
 domain or subdomain is live.
+
+## App store and OAuth readiness
+
+Use explicit English URLs for console fields unless a localized store listing
+requires otherwise:
+
+- Privacy Policy: `/en/legal/privacy`
+- Terms: `/en/legal/terms`
+- UGC Policy: `/en/legal/ugc-policy`
+- Support: `/en/support`
+- Account Deletion: `/en/account-deletion`
+- Report Content/User: `/en/report`
+- App details: `/en/apps/[slug]`
+
+The Android and Apple verification files are served at:
+
+- `/.well-known/assetlinks.json`
+- `/.well-known/apple-app-site-association`
+
+Every host used in app entitlements, including root and `www` when both are
+configured, must return `200` directly for those files with no redirect.
 
 For project media, upload up to 5 images in the `Project Images` field. The
 first image is used as the primary image for project cards and the work detail

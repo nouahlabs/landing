@@ -1,10 +1,21 @@
+import { appProducts, frenchAppProducts } from "@/data/apps";
+import { frenchLegalPages, legalPages } from "@/data/legal";
 import { processSteps } from "@/data/process";
 import { projects, getProjectBySlug as getEnglishProjectBySlug } from "@/data/projects";
 import { services } from "@/data/services";
 import { siteConfig } from "@/data/site";
 import { testimonials } from "@/data/testimonials";
 import type { Locale } from "./config";
-import type { ProcessStep, Project, Service, SiteConfig, Testimonial } from "@/types";
+import type {
+  AppProduct,
+  LegalPage,
+  LegalPageType,
+  ProcessStep,
+  Project,
+  Service,
+  SiteConfig,
+  Testimonial,
+} from "@/types";
 
 const frenchSiteConfig: SiteConfig = {
   ...siteConfig,
@@ -16,6 +27,14 @@ const frenchSiteConfig: SiteConfig = {
     { label: "Services", href: "/services" },
     { label: "A propos", href: "/about" },
     { label: "Contact", href: "/contact" },
+  ],
+  legalLinks: [
+    { label: "Confidentialite", href: "/legal/privacy" },
+    { label: "Conditions", href: "/legal/terms" },
+    { label: "Politique contenu", href: "/legal/ugc-policy" },
+    { label: "Support", href: "/support" },
+    { label: "Suppression de compte", href: "/account-deletion" },
+    { label: "Signaler", href: "/report" },
   ],
 };
 
@@ -200,4 +219,33 @@ export function getLocalTestimonials(locale: Locale): Testimonial[] {
 
 export function getLocalProcessSteps(locale: Locale): ProcessStep[] {
   return locale === "fr" ? frenchProcessSteps : processSteps;
+}
+
+export function getLocalLegalPages(locale: Locale): LegalPage[] {
+  return locale === "fr" ? frenchLegalPages : legalPages;
+}
+
+export function getLocalLegalPageByType(
+  type: LegalPageType,
+  locale: Locale
+): LegalPage | undefined {
+  return getLocalLegalPages(locale).find((page) => page.type === type);
+}
+
+export function getLocalLegalPageBySlug(
+  slug: string,
+  locale: Locale
+): LegalPage | undefined {
+  return getLocalLegalPages(locale).find((page) => page.slug === slug);
+}
+
+export function getLocalAppProducts(locale: Locale): AppProduct[] {
+  return locale === "fr" ? frenchAppProducts : appProducts;
+}
+
+export function getLocalAppProductBySlug(
+  slug: string,
+  locale: Locale
+): AppProduct | undefined {
+  return getLocalAppProducts(locale).find((app) => app.slug === slug);
 }
