@@ -7,7 +7,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sanity:login": "sanity login",
+    "sanity:manage": "sanity manage",
+    "sanity:dev": "sanity dev --host 0.0.0.0",
+    "sanity:deploy": "sanity deploy",
+    "sanity:register:prod": "sanity deploy --external --url https://www.nouahlabs.com/studio --yes",
+    "sanity:schemas:deploy": "sanity schemas deploy"
   },
   "dependencies": {
     "@sanity/vision": "^5.22.0",

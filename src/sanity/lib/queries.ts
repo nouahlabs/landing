@@ -79,6 +79,7 @@ export async function getProjects(
       category,
       year,
       externalUrl,
+      "images": coalesce(images[].asset->url, []),
       "thumbnail": thumbnail.asset->url,
       platform,
       status,

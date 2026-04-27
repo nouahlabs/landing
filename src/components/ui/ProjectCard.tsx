@@ -34,6 +34,8 @@ function ProductPreview({ title, label }: { title: string; label: string }) {
 }
 
 export function ProjectCard({ project, locale, label }: ProjectCardProps) {
+  const primaryImage = project.images?.[0] ?? project.thumbnail;
+
   return (
     <Link
       href={localizedPath(`/work/${project.slug}`, locale)}
@@ -41,9 +43,9 @@ export function ProjectCard({ project, locale, label }: ProjectCardProps) {
     >
       <article className="overflow-hidden rounded-xl border border-border bg-card transition duration-300 hover:-translate-y-1 hover:border-border-strong hover:shadow-xl hover:shadow-black/10">
         <div className="relative aspect-[16/10] overflow-hidden bg-dark-surface">
-          {project.thumbnail ? (
+          {primaryImage ? (
             <Image
-              src={project.thumbnail}
+              src={primaryImage}
               alt={`${project.title} preview`}
               fill
               sizes="(min-width: 768px) 50vw, 100vw"

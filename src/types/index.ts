@@ -6,6 +6,7 @@ export interface Project {
   category: string;
   year: string;
   externalUrl?: string;
+  images?: string[];
   thumbnail?: string;
   platform?: string;
   status?: string;

@@ -53,10 +53,18 @@ export const projectType = defineType({
         "Optional. Add this only after the product domain or subdomain is live.",
     }),
     defineField({
-      name: "thumbnail",
-      title: "Thumbnail",
-      type: "image",
-      options: { hotspot: true },
+      name: "images",
+      title: "Project Images",
+      type: "array",
+      description:
+        "Upload up to 5 images. The first image is used as the primary image in cards and the project hero.",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+        },
+      ],
+      validation: (rule) => rule.max(5),
     }),
     defineField({
       name: "platform",

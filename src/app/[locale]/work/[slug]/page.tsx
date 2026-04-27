@@ -59,6 +59,13 @@ export default async function WorkDetailPage({ params }: Props) {
     notFound();
   }
 
+  const projectImages = project.images?.length
+    ? project.images
+    : project.thumbnail
+      ? [project.thumbnail]
+      : [];
+  const primaryImage = projectImages[0] ?? "/assets/studio/mobile-build.webp";
+
   return (
     <>
       <Section className="bg-page pt-32">
@@ -92,7 +99,7 @@ export default async function WorkDetailPage({ params }: Props) {
               </div>
               <div className="relative min-h-72 border-t border-border lg:border-l lg:border-t-0">
                 <Image
-                  src={project.thumbnail ?? "/assets/studio/mobile-build.webp"}
+                  src={primaryImage}
                   alt={`${project.title} preview`}
                   fill
                   priority
@@ -173,6 +180,44 @@ export default async function WorkDetailPage({ params }: Props) {
           </div>
         </Container>
       </Section>
+
+      {projectImages.length > 1 && (
+        <Section className="bg-page pt-0">
+          <Container>
+            <FadeIn>
+              <div className="border-t border-border pt-12">
+                <p className="text-sm font-semibold uppercase text-accent-foreground">
+                  {t.workPage.gallery}
+                </p>
+                <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+                  {projectImages.map((image, index) => (
+                    <div
+                      key={`${image}-${index}`}
+                      className={
+                        index === 0
+                          ? "relative aspect-[16/10] overflow-hidden rounded-lg border border-border bg-dark-surface md:col-span-2"
+                          : "relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-dark-surface"
+                      }
+                    >
+                      <Image
+                        src={image}
+                        alt={`${project.title} gallery image ${index + 1}`}
+                        fill
+                        sizes={
+                          index === 0
+                            ? "(min-width: 768px) 960px, 100vw"
+                            : "(min-width: 768px) 50vw, 100vw"
+                        }
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+          </Container>
+        </Section>
+      )}
     </>
   );
 }

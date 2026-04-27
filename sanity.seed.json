@@ -1,0 +1,234 @@
+[
+  {
+    "_id": "siteSettings-main",
+    "_type": "siteSettings",
+    "name": "Nouah Labs",
+    "tagline": "Mobile apps and websites with product discipline.",
+    "description": "Nouah Labs is a focused app development studio for founders and teams that need thoughtful mobile apps, web products, and launch-ready digital systems.",
+    "url": "https://nouahlabs.com",
+    "email": "hello@nouahlabs.com",
+    "social": {
+      "twitter": "https://twitter.com/nouahlabs",
+      "linkedin": "https://linkedin.com/company/nouahlabs"
+    },
+    "nav": [
+      { "_key": "work", "label": "Work", "href": "/work" },
+      { "_key": "services", "label": "Services", "href": "/services" },
+      { "_key": "about", "label": "About", "href": "/about" },
+      { "_key": "contact", "label": "Contact", "href": "/contact" }
+    ]
+  },
+  {
+    "_id": "project-hirelify",
+    "_type": "project",
+    "slug": { "_type": "slug", "current": "hirelify" },
+    "title": "Hirelify",
+    "subtitle": "A focused mobile app for stronger job applications.",
+    "description": "Hirelify helps job seekers shape clearer CVs, organize application materials, and move from preparation to submission with less friction.",
+    "category": "Mobile App",
+    "year": "2026",
+    "platform": "iOS and Android",
+    "status": "In development",
+    "images": [
+      {
+        "_key": "hirelify-gallery-1",
+        "_type": "image",
+        "asset": {
+          "_type": "reference",
+          "_ref": "image-7d3be28de987a25f35e5db6696af290ba0c78bd8-1600x2400-jpg"
+        }
+      },
+      {
+        "_key": "hirelify-gallery-2",
+        "_type": "image",
+        "asset": {
+          "_type": "reference",
+          "_ref": "image-0c79e5d656c676407a530a05eef8087146c2b912-1600x1068-jpg"
+        }
+      },
+      {
+        "_key": "hirelify-gallery-3",
+        "_type": "image",
+        "asset": {
+          "_type": "reference",
+          "_ref": "image-a259864faaa63f604b447dcacbfc73eb21acac1e-1600x2400-jpg"
+        }
+      },
+      {
+        "_key": "hirelify-gallery-4",
+        "_type": "image",
+        "asset": {
+          "_type": "reference",
+          "_ref": "image-37e14b8c3638799ab788d94c32a827c964c29192-1600x2843-jpg"
+        }
+      },
+      {
+        "_key": "hirelify-gallery-5",
+        "_type": "image",
+        "asset": {
+          "_type": "reference",
+          "_ref": "image-a29509810424c95dbca49bd354a30e195060bd8b-1600x2843-jpg"
+        }
+      }
+    ],
+    "technologies": ["Expo", "React Native", "TypeScript"],
+    "featured": true,
+    "sortOrder": 1
+  },
+  {
+    "_id": "service-mobile-app",
+    "_type": "service",
+    "id": "mobile-app",
+    "title": "Mobile App Development",
+    "shortDescription": "Native and cross-platform mobile apps that users love to use.",
+    "longDescription": "We design and develop mobile applications for iOS and Android that combine beautiful interfaces with robust, scalable architecture. Whether you need a consumer app, an internal tool, or a companion to your existing product, we deliver experiences that feel natural and perform flawlessly.",
+    "icon": "smartphone",
+    "features": [
+      "iOS and Android development",
+      "Cross-platform with React Native or Flutter",
+      "Intuitive user interfaces",
+      "Offline-first architecture",
+      "Push notifications and real-time features",
+      "App Store submission and optimization"
+    ],
+    "sortOrder": 10
+  },
+  {
+    "_id": "service-website",
+    "_type": "service",
+    "id": "website",
+    "title": "Website Design & Development",
+    "shortDescription": "Premium websites that make a strong first impression and drive results.",
+    "longDescription": "Your website is often the first thing people see. We build fast, beautiful, and conversion-focused websites that tell your story and turn visitors into customers. Every site is custom-designed, responsive, and built on modern technology for speed and reliability.",
+    "icon": "globe",
+    "features": [
+      "Custom design from scratch",
+      "Responsive across all devices",
+      "SEO-optimized for discoverability",
+      "Fast loading and high performance",
+      "Content management integration",
+      "Analytics and conversion tracking"
+    ],
+    "sortOrder": 20
+  },
+  {
+    "_id": "service-web-app",
+    "_type": "service",
+    "id": "web-app",
+    "title": "Web Application Development",
+    "shortDescription": "Powerful web apps that handle complex workflows with elegance.",
+    "longDescription": "From SaaS platforms to internal tools, we build web applications that scale with your business. We focus on clean architecture, intuitive interfaces, and reliable performance so your team and your users can focus on what matters.",
+    "icon": "layout",
+    "features": [
+      "Full-stack development",
+      "Scalable cloud architecture",
+      "Real-time data and collaboration",
+      "Role-based access control",
+      "API design and integration",
+      "Automated testing and CI/CD"
+    ],
+    "sortOrder": 30
+  },
+  {
+    "_id": "service-mvp",
+    "_type": "service",
+    "id": "mvp",
+    "title": "MVP & Product Development",
+    "shortDescription": "From idea to launch — fast. We help you validate and ship your product.",
+    "longDescription": "Have an idea but need to move fast? We help startups and founders turn concepts into shipped products. Our MVP process is designed to get your product into users' hands quickly, gather feedback, and iterate toward product-market fit without wasting time or budget.",
+    "icon": "rocket",
+    "features": [
+      "Product strategy and planning",
+      "Rapid prototyping",
+      "Lean MVP development",
+      "User testing and validation",
+      "Iterative improvement",
+      "Launch strategy and support"
+    ],
+    "sortOrder": 40
+  },
+  {
+    "_id": "service-design",
+    "_type": "service",
+    "id": "design",
+    "title": "Product Design",
+    "shortDescription": "Thoughtful design that balances aesthetics with usability.",
+    "longDescription": "Great products start with great design. Our design process goes beyond making things look good — we focus on understanding user needs, simplifying complex workflows, and creating interfaces that feel effortless. Every design decision is intentional and backed by clear thinking.",
+    "icon": "palette",
+    "features": [
+      "User research and personas",
+      "Wireframing and prototyping",
+      "Visual design and branding",
+      "Design systems and components",
+      "Usability testing",
+      "Interaction and motion design"
+    ],
+    "sortOrder": 50
+  },
+  {
+    "_id": "service-dashboard",
+    "_type": "service",
+    "id": "dashboard",
+    "title": "Admin Dashboards",
+    "shortDescription": "Clean, functional dashboards that give you control over your data.",
+    "longDescription": "We build admin dashboards and internal tools that make managing your business easier. From analytics and reporting to user management and content operations, our dashboards are designed to be powerful without being overwhelming.",
+    "icon": "bar-chart",
+    "features": [
+      "Data visualization and reporting",
+      "User and role management",
+      "Content management",
+      "Activity logging and audit trails",
+      "Customizable widgets and views",
+      "Export and integration capabilities"
+    ],
+    "sortOrder": 60
+  },
+  {
+    "_id": "testimonial-launch-founder",
+    "_type": "testimonial",
+    "id": "launch-founder",
+    "quote": "Nouah Labs moved us from idea to a production-ready MVP quickly and with real product discipline.",
+    "author": "Aline M.",
+    "role": "Founder",
+    "company": "SaaS Startup",
+    "sortOrder": 10
+  },
+  {
+    "_id": "testimonial-product-lead",
+    "_type": "testimonial",
+    "id": "product-lead",
+    "quote": "Their team balances design quality and engineering rigor. Execution was fast and predictable.",
+    "author": "David K.",
+    "role": "Product Lead",
+    "company": "Growth Company",
+    "sortOrder": 20
+  },
+  {
+    "_id": "process-1-discovery",
+    "_type": "processStep",
+    "step": 1,
+    "title": "Discovery",
+    "description": "We start by understanding your goals, your users, and your market. This phase shapes everything that follows and ensures we're solving the right problem."
+  },
+  {
+    "_id": "process-2-design",
+    "_type": "processStep",
+    "step": 2,
+    "title": "Design",
+    "description": "We create wireframes, prototypes, and visual designs that bring your vision to life. Every screen is crafted with purpose before a single line of code is written."
+  },
+  {
+    "_id": "process-3-build",
+    "_type": "processStep",
+    "step": 3,
+    "title": "Build",
+    "description": "Our engineers bring the designs to life with clean, scalable code. We build in short cycles, keeping you involved and informed at every step."
+  },
+  {
+    "_id": "process-4-launch",
+    "_type": "processStep",
+    "step": 4,
+    "title": "Launch",
+    "description": "We handle testing, optimization, and deployment to ensure a smooth launch. Post-launch, we stay available to support and iterate based on real user feedback."
+  }
+]

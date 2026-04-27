@@ -28,6 +28,9 @@ visitor preference in `localStorage`.
 NEXT_PUBLIC_SITE_URL=https://nouahlabs.com
 NEXT_PUBLIC_SANITY_PROJECT_ID=your_sanity_project_id
 NEXT_PUBLIC_SANITY_DATASET=production
+# Optional aliases if Sanity/Vercel Marketplace provides these names:
+SANITY_PROJECT_ID=your_sanity_project_id
+SANITY_DATASET=production
 NEXT_PUBLIC_FORMSPREE_FORM_ID=your_formspree_form_id
 ```
 
@@ -39,16 +42,49 @@ You can use `NEXT_PUBLIC_FORMSPREE_ENDPOINT` instead of
 The embedded Studio lives at `/studio`.
 
 1. Create a free Sanity project.
-2. Add `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET`.
+2. Add `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET` to
+   `.env.local` and Vercel. If the Vercel Marketplace gives you
+   `SANITY_PROJECT_ID` and `SANITY_DATASET`, those are supported too.
 3. In Sanity project settings, add CORS origins for local and production:
    `http://localhost:3000`, `http://localhost:3001`, and
    `https://nouahlabs.com`.
 4. Create content for `Site Settings`, `Project`, `Service`, `Testimonial`,
    and `Process Step`.
 
+Useful commands:
+
+```bash
+npm run sanity:login
+npm run sanity:manage
+npm run sanity:dev
+npm run sanity:register:prod
+npm run sanity:schemas:deploy
+```
+
+Use `/studio` through the Next.js app for normal editing. `npm run sanity:dev`
+is available when you want to run Sanity Studio directly from the Sanity CLI.
+
+If `https://www.nouahlabs.com/studio` shows **"Connect this studio to your
+project"**, the production Studio host is not registered yet.
+
+Run:
+
+```bash
+npm run sanity:register:prod
+npm run sanity:schemas:deploy
+```
+
+The token/account used for these commands must include the
+`sanity.project.deployStudio` grant (for example an administrator/developer
+account, or a token with the "Deploy Studio (Token only)" role).
+
 Work cards open internal detail pages such as `/work/hirelify`. The
 `externalUrl` field is optional and should only be filled after the product
 domain or subdomain is live.
+
+For project media, upload up to 5 images in the `Project Images` field. The
+first image is used as the primary image for project cards and the work detail
+hero; the full set appears as the project gallery on the detail page.
 
 ## Formspree
 
